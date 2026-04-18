@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>agentic-mem — Commercially Supported ai-memory</title>
+<meta name="description" content="Commercially supported ai-memory: persistent memory for any AI. MCP server, HTTP API, CLI. Built by AlphaOne LLC.">
+<meta property="og:title" content="agentic-mem — Commercially Supported ai-memory">
+<meta property="og:description" content="Persistent memory for any AI. MCP server, HTTP API, CLI. Pure SQLite. Zero cloud dependencies. 97.8% R@5 on LongMemEval.">
+<meta property="og:url" content="https://agentic-mem.com">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/">
+      <span class="brand-mark">◼</span>
+      <span class="brand-name">agentic-mem</span>
+    </a>
+    <nav class="nav">
+      <a href="#features">Features</a>
+      <a href="#editions">Editions</a>
+      <a href="#install">Install</a>
+      <a href="#support">Support</a>
+      <a href="https://github.com/alphaonedev/ai-memory-mcp" class="nav-cta">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Commercially supported by AlphaOne LLC</p>
+    <h1>Persistent memory<br>for any AI agent.</h1>
+    <p class="lede">
+      <strong>agentic-mem</strong> is the commercial distribution of <strong>ai-memory</strong> &mdash;
+      an MCP server, HTTP API, and CLI that gives Claude, ChatGPT, Grok, Gemini, Codex,
+      Cursor, OpenClaw, and any MCP-compatible client durable, semantic, hybrid recall.
+      Pure SQLite. Zero cloud dependencies.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#install">Get started</a>
+      <a class="btn btn-ghost" href="#support">Talk to us</a>
+    </div>
+    <ul class="hero-stats">
+      <li><span class="stat-num">97.8%</span><span class="stat-label">R@5 on LongMemEval</span></li>
+      <li><span class="stat-num">0</span><span class="stat-label">cloud dependencies</span></li>
+      <li><span class="stat-num">SQLite</span><span class="stat-label">FTS5 + vector</span></li>
+      <li><span class="stat-num">MCP</span><span class="stat-label">native protocol</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="features" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Built for production agents</h2>
+    <p class="section-lede">
+      Memory you can ship. Hybrid keyword + semantic recall, namespaces, tiers,
+      links, contradiction detection, and consolidation &mdash; all on a single embeddable file.
+    </p>
+    <div class="grid">
+      <article class="card">
+        <h3>Hybrid recall</h3>
+        <p>Keyword (FTS5) + semantic (sentence-transformers) recall, ranked by relevance, priority, access frequency, and tier.</p>
+      </article>
+      <article class="card">
+        <h3>MCP-native</h3>
+        <p>Drop-in MCP server. Works with Claude Code, Cursor, Codex, Grok CLI, OpenClaw, and any MCP client.</p>
+      </article>
+      <article class="card">
+        <h3>Local-first</h3>
+        <p>SQLite-backed. Your memory lives on your machine. No vendor lock, no data exfiltration, no per-token billing.</p>
+      </article>
+      <article class="card">
+        <h3>Namespaces &amp; tiers</h3>
+        <p>Short / mid / long-term tiers. Hierarchical namespaces with scope-aware visibility for multi-agent fleets.</p>
+      </article>
+      <article class="card">
+        <h3>Links &amp; contradictions</h3>
+        <p>First-class memory graph: <code>related_to</code>, <code>supersedes</code>, <code>contradicts</code>, <code>derived_from</code>.</p>
+      </article>
+      <article class="card">
+        <h3>TOON-compact output</h3>
+        <p>Recall returns TOON-compact format by default &mdash; ~79% fewer tokens than JSON. More memory, less context spend.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="editions" class="section">
+  <div class="container">
+    <h2 class="section-title">Two editions, one engine</h2>
+    <p class="section-lede">
+      The open-source core stays open. Commercial support, hardening, and SLAs are
+      available through AlphaOne LLC.
+    </p>
+    <div class="editions">
+      <article class="edition">
+        <header class="edition-head">
+          <h3>ai-memory <span class="edition-tag">Open Source</span></h3>
+          <p class="edition-price">Free &middot; MIT</p>
+        </header>
+        <ul class="edition-list">
+          <li>Full MCP server, HTTP API, CLI</li>
+          <li>Semantic + keyword + hybrid recall</li>
+          <li>SQLite FTS5, embedded vectors</li>
+          <li>Community support via GitHub Issues</li>
+          <li>Apache 2.0 / MIT licensed</li>
+        </ul>
+        <a class="btn btn-ghost block" href="https://github.com/alphaonedev/ai-memory-mcp">View on GitHub</a>
+      </article>
+      <article class="edition edition-featured">
+        <header class="edition-head">
+          <h3>agentic-mem <span class="edition-tag edition-tag-pro">Commercial</span></h3>
+          <p class="edition-price">Talk to sales</p>
+        </header>
+        <ul class="edition-list">
+          <li>Everything in open source</li>
+          <li>Production hardening &amp; security review</li>
+          <li>SLA-backed bug fixes &amp; security patches</li>
+          <li>Private builds, signed releases</li>
+          <li>Architecture &amp; integration consulting</li>
+          <li>Roadmap influence</li>
+        </ul>
+        <a class="btn btn-primary block" href="#support">Contact sales</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="install" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Install</h2>
+    <p class="section-lede">Three commands. Works on macOS and Linux.</p>
+    <div class="code-stack">
+      <div class="code-block">
+        <div class="code-head">Homebrew</div>
+        <pre><code>brew install alphaonedev/tap/ai-memory
+ai-memory serve</code></pre>
+      </div>
+      <div class="code-block">
+        <div class="code-head">From source</div>
+        <pre><code>git clone https://github.com/alphaonedev/ai-memory-mcp
+cd ai-memory-mcp
+cargo install --path .</code></pre>
+      </div>
+      <div class="code-block">
+        <div class="code-head">MCP client config (Claude Code)</div>
+        <pre><code>{
+  "mcpServers": {
+    "memory": {
+      "command": "ai-memory",
+      "args": ["mcp"]
+    }
+  }
+}</code></pre>
+      </div>
+    </div>
+    <p class="section-foot">
+      Full docs: <a href="https://alphaonedev.github.io/ai-memory-mcp/">alphaonedev.github.io/ai-memory-mcp</a>
+    </p>
+  </div>
+</section>
+
+<section id="support" class="section">
+  <div class="container">
+    <h2 class="section-title">Commercial support</h2>
+    <p class="section-lede">
+      Building agents on ai-memory in production? AlphaOne LLC offers commercial
+      licensing, SLA support, security review, and integration consulting.
+    </p>
+    <div class="contact-card">
+      <p><strong>AlphaOne LLC</strong></p>
+      <p>Owner of the <em>ai-memory</em> trademark.</p>
+      <p>Email <a href="mailto:Justin@alpha-one.mobi">Justin@alpha-one.mobi</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <p>&copy; 2026 AlphaOne LLC. <em>ai-memory</em> is a trademark of AlphaOne LLC.</p>
+    <nav class="footer-nav">
+      <a href="https://github.com/alphaonedev/ai-memory-mcp">GitHub</a>
+      <a href="https://alphaonedev.github.io/ai-memory-mcp/">Docs</a>
+      <a href="mailto:Justin@alpha-one.mobi">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
