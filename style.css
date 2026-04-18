@@ -227,12 +227,18 @@ code { font-family: var(--font-mono); font-size: 0.92em; background: var(--bg-al
 .contact-card p:first-child { color: var(--ink); margin-bottom: 8px; }
 
 /* Footer */
-.site-footer { border-top: 1px solid var(--line); padding: 32px 0; background: var(--bg); }
-.footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.site-footer p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.site-footer { border-top: 1px solid var(--line); padding: 40px 0 48px; background: var(--bg); }
+.footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
 .footer-nav { display: flex; gap: 18px; }
 .footer-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
 .footer-nav a:hover { color: var(--ink); }
+.legal { color: var(--muted); font-size: 0.78rem; line-height: 1.55; max-width: 980px; }
+.legal p { margin: 0 0 10px; }
+.legal p:last-child { margin-bottom: 0; }
+.legal strong { color: var(--ink-soft); font-weight: 600; }
+.legal a { color: var(--muted); }
+.legal a:hover { color: var(--ink); }
+.legal-meta { padding-top: 8px; border-top: 1px solid var(--line); }
 
 /* Responsive */
 @media (max-width: 720px) {
