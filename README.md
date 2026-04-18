@@ -1,6 +1,6 @@
 # agentic-mem.com
 
-Marketing site for **agentic-mem** — the commercially supported distribution of
+Marketing site for **AgenticMem** — the commercially supported distribution of
 [ai-memory](https://github.com/alphaonedev/ai-memory-mcp) by AlphaOne LLC.
 
 ## Stack
