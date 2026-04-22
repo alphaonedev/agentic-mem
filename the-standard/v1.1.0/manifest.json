@@ -1,0 +1,17 @@
+{
+  "bundle_version": "1.1.0",
+  "generated_at": "2026-04-22T14:07:32Z",
+  "source_db": "/root/.claude/ai-memory.db",
+  "contents": [
+    "the-standard.db",
+    "THE_STANDARD.md",
+    "the-standard.yaml",
+    "the-standard.json",
+    "CLAUDE.md",
+    "import.sh",
+    "build-bundle.sh",
+    "README.md",
+    "VERSION"
+  ],
+  "bible_memory_id": "f57e9da1-08e5-4401-b5fc-fe909e97a1ec"
+}
