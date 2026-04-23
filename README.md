@@ -1,4 +1,4 @@
-# agentic-mem.com
+# agenticmem.co
 
 Marketing site for **AgenticMem** — the commercially supported distribution of
 [ai-memory](https://github.com/alphaonedev/ai-memory-mcp) by AlphaOne LLC.
@@ -6,7 +6,7 @@ Marketing site for **AgenticMem** — the commercially supported distribution of
 ## Stack
 - Pure static HTML + CSS, no build step.
 - Deployed via **Cloudflare Pages** (auto-deploy on push to `main`).
-- Custom domain: <https://agentic-mem.com>
+- Custom domain: <https://agenticmem.co>
 
 ## Local preview
 ```bash
