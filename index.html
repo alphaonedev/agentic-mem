@@ -231,8 +231,28 @@
       restore, and a governance approval flow. The autonomous curator daemon makes the memory
       layer self-maintaining between sessions: contradictions get surfaced before they
       accumulate, near-duplicates get consolidated, and priority is reranked by access pattern.
-      Published benchmarks: 97.8% R@5 on LongMemEval-S (ICLR 2025). Operational evidence
-      trails: ship-gate, ai2ai-gate.
+    </p>
+    <p class="section-lede">
+      The federation layer &mdash; W-of-N quorum writes, peer catchup, mTLS allowlist &mdash;
+      makes ai-memory a viable shared cognitive substrate when agent fleets run across multiple
+      machines. Webhook subscriptions (HMAC-signed, namespace + agent-filtered, SSRF-hardened)
+      turn the store into a message bus that triggers downstream agents on memory events. With
+      these primitives in place, the same pattern that produces autonomous behavior at swarm
+      scale &mdash; many agents writing, reading, observing, and triggering each other through
+      a coherent shared memory &mdash; is something you can build on top, not a wiring problem
+      you have to solve first.
+    </p>
+    <p class="section-lede">
+      Published benchmarks: 97.8% R@5 on LongMemEval-S (ICLR 2025). Operational evidence trails:
+      ship-gate, ai2ai-gate.
+    </p>
+    <p class="section-lede" style="font-size:0.92rem; opacity:0.85">
+      <strong>Honest scope.</strong> ai-memory does not make any AI autonomous on its own.
+      Pair it with a 24/7 multi-machine agent runner and a framework that accumulates skills
+      over time, and the combined system clears the <em>behavioral</em> bar for autonomous
+      agent operations. The remaining mechanistic gaps &mdash; no weight-level learning,
+      stateless cognition kernel, human-seeded root goals &mdash; are research problems, not
+      memory-substrate problems. ai-memory is the memory substrate, well executed.
     </p>
     <p class="section-lede">
       You don't have to trust us. You can run the substrate yourself. You can inspect the
