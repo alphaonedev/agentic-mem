@@ -120,8 +120,15 @@
   <div class="container">
     <h2 class="section-title">Built on infrastructure nobody else has.</h2>
     <p class="section-lede">
-      AgenticMem runs on <em>ai-memory</em> &mdash; the first federated multi-agent memory
-      substrate, open-source under Apache 2.0 and currently the only one of its kind.
+      AgenticMem runs on <em>ai-memory</em> &mdash; the open-source federated multi-agent memory
+      substrate. v0.6.2 ships a single Rust binary (tokio + axum) with four operational modes
+      that share one SQLite database: an <strong>stdio MCP server</strong> (26 tools over JSON-RPC),
+      an <strong>HTTP / mTLS daemon</strong> (24 REST endpoints with TLS, mTLS allowlist, and
+      API-key auth), an <strong>autonomous curator daemon</strong> that keeps memory tidy on a
+      configurable cadence (auto-tag, contradiction surfacing, near-duplicate consolidation,
+      priority feedback, rollback log), and a <strong>quorum sync daemon</strong> for peer
+      federation with vector-clock CRDT-lite merge and mTLS peer authentication.
+      Apache 2.0. Local-first. Zero cloud dependencies.
     </p>
     <div class="grid grid-3">
       <article class="card">
@@ -219,8 +226,13 @@
     <h2 class="section-title">Infrastructure you can inspect.</h2>
     <p class="section-lede">
       <em>ai-memory</em> &mdash; the open-source substrate AgenticMem is built on &mdash; is public.
-      Apache 2.0. Production-ready. Federated multi-agent memory with published benchmarks
-      (97.8% R@5 on LongMemEval-S) and operational evidence trails (ship-gate, ai2ai-gate).
+      Apache 2.0. Production-ready. v0.6.2 ships hybrid recall (FTS5 + vector + cross-encoder
+      reranking), three-tier TTL with promotion, namespaces, typed memory links, archive +
+      restore, and a governance approval flow. The autonomous curator daemon makes the memory
+      layer self-maintaining between sessions: contradictions get surfaced before they
+      accumulate, near-duplicates get consolidated, and priority is reranked by access pattern.
+      Published benchmarks: 97.8% R@5 on LongMemEval-S (ICLR 2025). Operational evidence
+      trails: ship-gate, ai2ai-gate.
     </p>
     <p class="section-lede">
       You don't have to trust us. You can run the substrate yourself. You can inspect the
