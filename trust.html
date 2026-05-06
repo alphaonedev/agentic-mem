@@ -73,10 +73,10 @@
         <div class="step-head">
           <span class="step-num">Step 3</span>
           <span class="step-title">OSS Attested</span>
-          <span class="step-meta">v0.7 end Q2 2026 &middot; free &middot; Apache 2.0</span>
+          <span class="step-meta">v0.7 target end Q2 2026 &middot; free &middot; Apache 2.0</span>
           <span class="status-pill status-pending">In flight</span>
         </div>
-        <p class="step-body">Adds Ed25519 cryptographic attestation. Every memory link write is signed end-to-end. Verifiable provenance from the originating agent through every replication hop.</p>
+        <p class="step-body">When v0.7 ships (target end Q2 2026), this step will add Ed25519 cryptographic attestation. Every memory link write will be signed end-to-end, providing verifiable provenance from the originating agent through every replication hop. Today (current OSS release), the substrate ships with mTLS authentication and a fingerprint allowlist; cryptographic attestation of individual writes is the v0.7 milestone.</p>
         <p class="step-use"><strong>Use case:</strong> regulated environments where the OSS substrate is sufficient and your internal compliance team can map the evidence to your frameworks.</p>
       </li>
 
@@ -84,10 +84,10 @@
         <div class="step-head">
           <span class="step-num">Step 4</span>
           <span class="step-title">AgenticMem Attest</span>
-          <span class="step-meta">commercial &middot; Q3 2026 launch</span>
-          <span class="status-pill status-pending">In flight</span>
+          <span class="step-meta">commercial (pre-launch) &middot; Q3 2026 launch</span>
+          <span class="status-pill status-pending">Pre-commercial</span>
         </div>
-        <p class="step-body">Adds: hardware-backed key storage (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM); SOC 2 Type II mapped evidence; HIPAA Business Associate Agreement; managed key rotation; 24/7 incident response; dedicated TAM.</p>
+        <p class="step-body">At commercial launch (Q3 2026), AgenticMem Attest is being built to add to OSS Attested: hardware-backed key storage (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM); SOC 2 Type II evidence-mapping for your auditor; HIPAA Business Associate Agreement scope where applicable to the customer engagement (terms in the customer agreement); managed key rotation; severity-tiered managed-SOC response targets specified in the customer agreement; dedicated TAM. All items are subject to the timelines and conditions on the Evidence page.</p>
         <p class="step-use"><strong>Use case:</strong> enterprises in regulated industries (financial services, healthcare, regulated professional services) that need commercial counterparty for compliance and liability acceptance.</p>
       </li>
 
@@ -95,10 +95,10 @@
         <div class="step-head">
           <span class="step-num">Step 5</span>
           <span class="step-title">AgenticMem Federate</span>
-          <span class="step-meta">commercial &middot; Q4 2026 launch</span>
-          <span class="status-pill status-pending">In flight</span>
+          <span class="step-meta">commercial (pre-launch) &middot; Q4 2026 launch</span>
+          <span class="status-pill status-pending">Pre-commercial</span>
         </div>
-        <p class="step-body">Adds (over Attest): cross-organization federation control plane; multi-region tribunal infrastructure with Byzantine fault tolerance; cross-trust-boundary key management; dedicated security operations center; quarterly third-party penetration testing; incident forensics retainer.</p>
+        <p class="step-body">At commercial launch (Q4 2026), AgenticMem Federate is being built to add to Attest: cross-organization federation control plane; multi-region quorum-write infrastructure using W-of-N consensus and an mTLS-authenticated peer mesh; cross-trust-boundary key management; managed Security Operations Center; planned quarterly third-party penetration testing; technical-personnel availability for incident response, scoped by the customer agreement applicable to the engagement. Specific fault-tolerance properties are documented in the architecture references on the Evidence page.</p>
         <p class="step-use"><strong>Use case:</strong> large enterprises, consortia, multi-division deployments, joint ventures.</p>
       </li>
 
@@ -106,10 +106,10 @@
         <div class="step-head">
           <span class="step-num">Step 6</span>
           <span class="step-title">AgenticMem Sovereign</span>
-          <span class="step-meta">commercial &middot; targeted late 2027 (FedRAMP-dependent)</span>
+          <span class="step-meta">commercial (pre-launch) &middot; target late 2027 &mdash; FedRAMP-dependent</span>
           <span class="status-pill status-future">Charter</span>
         </div>
-        <p class="step-body">Adds (over Federate): FedRAMP Moderate or High authorization sponsorship via FedRAMP 20x pathway; DoD IL4 / IL5 mappings; ITAR registration; air-gap deployment kits; cleared support team; agency-specific evidence packages.</p>
+        <p class="step-body">When delivered (target late 2027), AgenticMem Sovereign is planned to add to Federate: FedRAMP Moderate or High authorization sponsorship via the FedRAMP 20x pathway (subject to GSA process and a sponsoring agency); DoD Impact Level 4 / 5 mappings; ITAR registration with DDTC; air-gap deployment kits; cleared support staff; agency-specific evidence packages. As of 2026-05, no AgenticMem personnel hold federal security clearances; clearance is targeted to be initiated through the sponsoring-agency process at engagement.</p>
         <p class="step-use"><strong>Use case:</strong> government agencies, defense contractors, intelligence community deployments.</p>
       </li>
 
