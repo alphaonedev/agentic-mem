@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How we differ &mdash; AgenticMem&#8482;</title>
+<meta name="description" content="Why a memory layer needs an operational tier. How AgenticMem differs from Mem0, Letta, Zep, and other AI memory products.">
+<meta property="og:title" content="How we differ &mdash; AgenticMem">
+<meta property="og:url" content="https://agenticmem.co/different">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#15181c">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/">
+      <span class="brand-mark"></span>
+      <span class="brand-name">AgenticMem<span class="brand-tm">&trade;</span></span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/different" class="active">How we differ</a>
+      <a href="/trust">Trust ladder</a>
+      <a href="/evidence">Evidence</a>
+      <a href="/founder">Founder note</a>
+      <a href="/#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Page 2 / How we differ</p>
+    <h1>Why a memory layer needs an operational tier</h1>
+    <p>Most AI memory products are SaaS. You send your data to their cloud. Their compliance posture becomes your compliance posture.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>The failure modes</h2>
+    <p class="lede">When the regulator asks, you point at their SOC 2 report. When the auditor demands, you wait for their export. When opposing counsel issues a subpoena, you file a motion. This works until it doesn't. The failure modes:</p>
+    <ul class="spaced">
+      <li><strong>Data residency</strong> &mdash; your customer requires data stay in the EU or in their country; the SaaS vendor does not have a region there</li>
+      <li><strong>Regulatory escalation</strong> &mdash; a regulator imposes new requirements on AI; your SaaS vendor's roadmap does not align with your timeline</li>
+      <li><strong>Vendor failure</strong> &mdash; your SaaS vendor gets acquired, pivots, or fails; your data is hostage</li>
+      <li><strong>Air-gap requirement</strong> &mdash; your customer requires no outbound network calls; your SaaS vendor cannot satisfy this</li>
+      <li><strong>Liability concentration</strong> &mdash; you carry liability for AI agent actions but cannot inspect the system that performed them</li>
+    </ul>
+    <p><em>ai-memory</em>&trade; solves the data plane problem: open source, runs on your infrastructure, you own your data forever.</p>
+    <p>But that creates a new problem: <strong>you are now operating regulated infrastructure with no commercial counterparty.</strong> When the auditor demands evidence, you produce it yourself. When the BAA is required, you have nobody to sign it. When the FedRAMP authorization is needed, you sponsor it yourself.</p>
+    <p>For most organizations, that is fine. The OSS is enough.</p>
+    <p>For regulated organizations, that is not fine. They need the operational counterparty.</p>
+    <p class="callout">That is the AgenticMem position: operational counterparty for organizations running ai-memory at regulated scale.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container wide">
+    <h2>How we differ from Mem0, Letta, Zep, and the rest</h2>
+    <p class="lede">We will be specific because vague comparisons do not help procurement teams.</p>
+    <div class="fact-table-wrap">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Mem0 Cloud</th>
+            <th>Letta Cloud</th>
+            <th>Zep Cloud</th>
+            <th>AgenticMem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>License of substrate</th>
+            <td>Apache 2.0</td>
+            <td>Apache 2.0</td>
+            <td>mixed</td>
+            <td class="yes">Apache 2.0</td>
+          </tr>
+          <tr>
+            <th>Where your data lives</th>
+            <td>Mem0's cloud</td>
+            <td>Letta's cloud</td>
+            <td>Zep's cloud</td>
+            <td class="yes">Your infrastructure</td>
+          </tr>
+          <tr>
+            <th>Self-hosting available</th>
+            <td>OpenMemory (Docker)</td>
+            <td>self-host stack</td>
+            <td>Graphiti (open source)</td>
+            <td class="yes">Native</td>
+          </tr>
+          <tr>
+            <th>SOC 2 Type II</th>
+            <td>Yes (Mem0 holds it)</td>
+            <td>unverified</td>
+            <td>Yes (Zep holds it)</td>
+            <td class="yes">You can hold yours, mapped from substrate</td>
+          </tr>
+          <tr>
+            <th>HIPAA BAA</th>
+            <td>Mem0 signs</td>
+            <td>unverified</td>
+            <td>Zep signs</td>
+            <td class="yes">AgenticMem signs, with substrate-derived evidence</td>
+          </tr>
+          <tr>
+            <th>FedRAMP</th>
+            <td class="no">not authorized</td>
+            <td class="no">not authorized</td>
+            <td class="no">not authorized</td>
+            <td class="yes">Sovereign tier path</td>
+          </tr>
+          <tr>
+            <th>Air-gap deployment</th>
+            <td class="no">not possible</td>
+            <td>possible (self-host)</td>
+            <td>possible (Graphiti)</td>
+            <td class="yes">Native, with operational support</td>
+          </tr>
+          <tr>
+            <th>Multi-agent native</th>
+            <td>partial</td>
+            <td>partial</td>
+            <td>partial</td>
+            <td class="yes">Native (W-of-N quorum federation)</td>
+          </tr>
+          <tr>
+            <th>Mesh federation</th>
+            <td class="no">not native</td>
+            <td class="no">not native</td>
+            <td class="no">not native</td>
+            <td class="yes">Native (mTLS allowlist, vector clocks)</td>
+          </tr>
+          <tr>
+            <th>Temporal-validity KG</th>
+            <td>partial (graph add-on)</td>
+            <td class="no">not native</td>
+            <td>yes (Graphiti)</td>
+            <td class="yes">Native</td>
+          </tr>
+          <tr>
+            <th>Trademark</th>
+            <td>Mem0</td>
+            <td>Letta / MemGPT</td>
+            <td>Zep / Graphiti</td>
+            <td class="yes">AgenticMem&trade; + ai-memory&trade;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Honest comparisons</h2>
+    <p>Mem0, Letta, and Zep are all good products. They serve different use cases than we do.</p>
+    <p>If you need a managed cloud service, you should evaluate Mem0 first. They have $24M in venture funding, AWS partnership, 41,000 GitHub stars, and the most mature managed offering in the category. We do not compete with that and we will tell you so on the discovery call.</p>
+    <p>If you need a long-running agent runtime with self-editing memory, you should evaluate Letta. They are the production evolution of MemGPT and they have a real architecture for it.</p>
+    <p>If you need a temporal knowledge graph with strong relational accuracy, you should evaluate Zep / Graphiti. Their LongMemEval scores are the best in the field for that specific dimension.</p>
+
+    <h3>You should evaluate AgenticMem when:</h3>
+    <ul class="spaced">
+      <li>You need data sovereignty (your data on your infrastructure, never on ours)</li>
+      <li>You need regulatory defensibility (we sign BAAs, we sponsor FedRAMP, we accept liability)</li>
+      <li>You need multi-agent coordination across organizational trust boundaries (not just user/session/agent scopes within one cloud)</li>
+      <li>You need air-gap deployment for classified or export-controlled environments</li>
+      <li>You need a vendor that cannot lock you in because the substrate is open source forever</li>
+    </ul>
+    <p>If those are not your requirements, you should probably not buy from us. The OSS is free; you can run it yourself; the cost of our commercial tier exists for the operational scale where the certifications and liability matter, not for everyone.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/#contact">Inquire about commercial deployment</a>
+      <a class="btn btn-ghost" href="/trust">Read the trust ladder</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>AlphaOne LLC</h4>
+        <address>
+          AlphaOne LLC<br>
+          [Street address &mdash; registered office]<br>
+          [City, State ZIP]<br>
+          United States
+        </address>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/different">How we differ</a></li>
+          <li><a href="/trust">Trust ladder</a></li>
+          <li><a href="/evidence">Public evidence</a></li>
+          <li><a href="/founder">Founder note</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p><em>AgenticMem</em>&trade; and <em>ai-memory</em>&trade; are trademarks of AlphaOne LLC.</p>
+      <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
+      <p>&copy; 2026 AlphaOne LLC. All rights reserved.</p>
+      <p class="privacy-note">No third-party analytics. No trackers. No cookies set on first load.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

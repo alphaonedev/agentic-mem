@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public evidence &mdash; AgenticMem&#8482;</title>
+<meta name="description" content="Verify before you engage. Source code, test evidence, coverage, performance budgets, and honest disclosure of what is not yet in place.">
+<meta property="og:title" content="Public evidence &mdash; AgenticMem">
+<meta property="og:url" content="https://agenticmem.co/evidence">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#15181c">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="/">
+      <span class="brand-mark"></span>
+      <span class="brand-name">AgenticMem<span class="brand-tm">&trade;</span></span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/different">How we differ</a>
+      <a href="/trust">Trust ladder</a>
+      <a href="/evidence" class="active">Evidence</a>
+      <a href="/founder">Founder note</a>
+      <a href="/#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Page 4 / Public evidence</p>
+    <h1>Verify before you engage</h1>
+    <p>We publish evidence the way enterprise procurement wants to see it: cryptographically signed, machine-readable, third-party-verifiable wherever possible.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container wide">
+
+    <div class="evidence-block">
+      <h3>Source code</h3>
+      <p><a href="https://github.com/alphaonedev/ai-memory-mcp">github.com/alphaonedev/ai-memory-mcp</a></p>
+      <ul class="spaced">
+        <li>Apache 2.0 license, full source available</li>
+        <li>All commits signed with GPG key SHA256 <code>tkfDATcb8+hjhJeI3LvDbwAaks/8QqBMRr6oOWz6iBA</code></li>
+        <li>Reproducible builds documented</li>
+        <li>No CLA-and-relicense gotcha &mdash; Apache 2.0 is permanent</li>
+      </ul>
+    </div>
+
+    <div class="evidence-block">
+      <h3>Test evidence</h3>
+      <p><a href="https://alphaonedev.github.io/ai-memory-test-hub/">alphaonedev.github.io/ai-memory-test-hub</a></p>
+      <ul class="spaced">
+        <li>Per-release verdict pages with phase-by-phase results</li>
+        <li>Ship-gate (release testing on DigitalOcean infrastructure): functional, multi-agent, migration, chaos</li>
+        <li>A2A-gate (multi-agent integration testing): 48 scenarios across mTLS cells</li>
+        <li>All run artifacts linked to GitHub Actions run IDs for verification</li>
+      </ul>
+    </div>
+
+    <div class="evidence-block">
+      <h3>Coverage and tests</h3>
+      <ul class="spaced">
+        <li>93.05% line coverage (42,894 / 46,099 lines)</li>
+        <li>1,809 tests passing, 0 failed, 0 ignored</li>
+        <li>Coverage gate enforced in CI: <code>cargo llvm-cov --fail-under-lines 92</code></li>
+        <li>Per-module breakdown public: 7 modules at 100%, 39 of 47 &ge; 90%</li>
+      </ul>
+    </div>
+
+    <div class="evidence-block">
+      <h3>Performance budgets</h3>
+      <p><a href="https://alphaonedev.github.io/ai-memory-mcp/performance.html">alphaonedev.github.io/ai-memory-mcp/performance.html</a></p>
+      <ul class="spaced">
+        <li>Public p95/p99 budgets per operation</li>
+        <li>CI fails any PR exceeding budget by &gt;10%</li>
+        <li>Hardware baseline documented (Apple M4, 32GB, NVMe SSD)</li>
+        <li>Bench tool reproducible by any OSS user: <code>ai-memory bench</code></li>
+      </ul>
+    </div>
+
+    <div class="evidence-block">
+      <h3>Distribution channels</h3>
+      <p>All five channels signed and verifiable:</p>
+      <ul class="spaced">
+        <li>crates.io (Rust package registry)</li>
+        <li>Homebrew (macOS)</li>
+        <li>Fedora COPR (RHEL/Fedora)</li>
+        <li>Docker GHCR (container registry)</li>
+        <li>APT PPA (Ubuntu/Debian)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container wide">
+    <h2>What we have not yet certified</h2>
+    <p class="lede">Honest disclosure of what is not yet in place:</p>
+    <ul class="spaced">
+      <li><strong>SOC 2 Type II</strong> &mdash; readiness assessment in progress; first audit cycle targeted Q3 2026; first attestation report Q4 2026</li>
+      <li><strong>HIPAA BAA template</strong> &mdash; under legal review; available to design partners Q3 2026</li>
+      <li><strong>FedRAMP authorization</strong> &mdash; agency sponsor identification in progress; targeted authorization 2027 via FedRAMP 20x</li>
+      <li><strong>ITAR registration</strong> &mdash; pursued in parallel with first defense contractor design partner engagement</li>
+      <li><strong>Penetration test report</strong> &mdash; first independent third-party penetration test scheduled Q3 2026</li>
+    </ul>
+    <p>If you need any of the above before we have it, we should not be your vendor yet. Run the OSS in pilot, evaluate other vendors that hold these certifications today, and revisit AgenticMem at our commercial launch.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/#contact">Inquire about commercial deployment</a>
+      <a class="btn btn-ghost" href="https://github.com/alphaonedev/ai-memory-mcp">View ai-memory on GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>AlphaOne LLC</h4>
+        <address>
+          AlphaOne LLC<br>
+          [Street address &mdash; registered office]<br>
+          [City, State ZIP]<br>
+          United States
+        </address>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/different">How we differ</a></li>
+          <li><a href="/trust">Trust ladder</a></li>
+          <li><a href="/evidence">Public evidence</a></li>
+          <li><a href="/founder">Founder note</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p><em>AgenticMem</em>&trade; and <em>ai-memory</em>&trade; are trademarks of AlphaOne LLC.</p>
+      <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
+      <p>&copy; 2026 AlphaOne LLC. All rights reserved.</p>
+      <p class="privacy-note">No third-party analytics. No trackers. No cookies set on first load.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgenticMem — Legal Defensibility for AI Agent Operations</title>
-<meta name="description" content="AgenticMem is the legal-defensibility infrastructure for autonomous AI agent operations. Attestation, enforced governance, forensic-grade audit, and compliance-ready evidence for Fortune 500, financial services, healthcare, government, and defense.">
-<meta property="og:title" content="AgenticMem — Legal Defensibility for AI Agent Operations">
-<meta property="og:description" content="Your AI agents act on your behalf 24/7. AgenticMem is the substrate they operate on — and the evidence trail that proves they operated responsibly.">
+<title>AgenticMem&#8482; &mdash; Operational counterparty for AI agent operations</title>
+<meta name="description" content="AgenticMem provides certifications, operations, and liability acceptance for organizations running ai-memory at regulated scale. The substrate is open source under Apache 2.0; AgenticMem is the commercial counterparty.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="AgenticMem &mdash; Operational counterparty for AI agent operations">
+<meta property="og:description" content="Certifications, operations, and liability acceptance for organizations running ai-memory at regulated scale.">
 <meta property="og:url" content="https://agenticmem.co">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#15181c">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
@@ -18,356 +19,275 @@
 <header class="site-header">
   <div class="container header-row">
     <a class="brand" href="/">
-      <span class="brand-mark">◼</span>
-      <span class="brand-name">AgenticMem</span>
+      <span class="brand-mark"></span>
+      <span class="brand-name">AgenticMem<span class="brand-tm">&trade;</span></span>
     </a>
     <nav class="nav">
-      <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
-      <a href="#for">Who it's for</a>
-      <a href="#tiers">Tiers</a>
-      <a href="#oss">Open source</a>
-      <a href="#about">About</a>
-      <a href="#engage" class="nav-cta">Request access</a>
+      <a href="/" class="active">Home</a>
+      <a href="/different">How we differ</a>
+      <a href="/trust">Trust ladder</a>
+      <a href="/evidence">Evidence</a>
+      <a href="/founder">Founder note</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<section class="hero hero-pitch">
+<section class="hero">
   <div class="container">
-    <p class="eyebrow">AgenticMem by AlphaOne LLC &middot; Legal-defensibility infrastructure for AI agent operations</p>
-    <h1>AI agents are doing your work.</h1>
-    <p class="hero-sub">
-      Your general counsel cannot defend what they do.<br>
-      Your regulators will eventually ask.<br>
-      Your board expects you to have the answer.
-    </p>
-    <p class="hero-answer"><strong>AgenticMem is the answer.</strong></p>
+    <p class="eyebrow">AgenticMem&trade; by AlphaOne LLC</p>
+    <h1>AI agents are operating in your organization right now.</h1>
+    <p>Your General Counsel cannot defend what they did.</p>
+    <p>Your auditor cannot reconstruct what authorized them.</p>
+    <p>Your CISO cannot prove what data they touched.</p>
+    <p class="callout">That is not a tooling problem. That is an operational defensibility problem.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#engage">Request early access</a>
-      <a class="btn btn-ghost" href="#solution">Read the technical overview</a>
+      <a class="btn btn-primary" href="#contact">Inquire about commercial deployment</a>
+      <a class="btn btn-ghost" href="https://github.com/alphaonedev/ai-memory-mcp">Deploy the open-source substrate today</a>
     </div>
-    <p class="hero-tag"><em>The legal-defensibility infrastructure for autonomous AI agent operations.</em></p>
   </div>
 </section>
 
-<section id="problem" class="section">
+<section class="section">
   <div class="container">
-    <h2 class="section-title">The governance gap that's growing inside your organization</h2>
-    <p class="section-lede">
-      Your teams are deploying AI agents. Those agents write code, make decisions, touch customer
-      data, coordinate across systems, and act on your organization's behalf &mdash; 24 hours a day,
-      every day, at scale you cannot personally supervise.
-    </p>
-    <p class="section-lede">
-      What your general counsel, compliance team, and auditors need to know, they currently cannot tell you:
-    </p>
-    <ul class="question-list">
-      <li>Who authorized this specific AI action?</li>
-      <li>What rules governed the decision?</li>
-      <li>What evidence exists that governance was followed?</li>
-      <li>Can we produce a complete audit trail for discovery?</li>
-      <li>Can we defend this to our regulators?</li>
-      <li>Can we demonstrate oversight to our board?</li>
+    <p class="section-num">&sect; 1 &mdash; The actual problem</p>
+    <h2>What your AI agents are doing without supervision</h2>
+    <p class="lede">Right now, somewhere in your organization, AI agents are:</p>
+    <ul class="spaced">
+      <li>Writing code that ships to production</li>
+      <li>Reading customer records</li>
+      <li>Sending email on behalf of your employees</li>
+      <li>Approving or rejecting work</li>
+      <li>Coordinating across systems you do not own</li>
+      <li>Accumulating institutional knowledge that walks out the door when their session ends</li>
     </ul>
-    <p class="section-closer">
-      Most organizations cannot answer these questions today. The exposure compounds daily.
-      The first major AI agent enforcement action will create expensive precedent. Organizations
-      without documented governance will face retroactive remediation costs dwarfing the investment
-      in getting it right proactively.
-    </p>
+    <p>Your existing infrastructure was not designed for any of this. Your SIEM does not know what an AI agent is. Your IAM does not issue agent credentials. Your audit log does not record agent decisions. Your DLP does not understand agent context.</p>
+    <p>When the regulator asks, the auditor pulls a sample, or opposing counsel demands discovery, you will have <strong>logs of API calls</strong> and nothing else. No identity chain. No authorization record. No documented governance. No tamper-evident trail.</p>
+    <p>That is the gap. That is what we close.</p>
   </div>
 </section>
 
-<section id="solution" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">The substrate your AI agents operate on &mdash; and the evidence trail that proves they operated responsibly.</h2>
-    <p class="section-lede">
-      For every AI agent in your organization, AgenticMem provides:
-    </p>
-    <div class="grid">
-      <article class="card">
-        <h3>Cryptographic Attestation</h3>
-        <p>Every agent identity cryptographically verified. Every authority chain documented. Every action signed. No agent operates without verifiable identity.</p>
-      </article>
-      <article class="card">
-        <h3>Documented Standards of Work</h3>
-        <p>Your existing policies become enforced governance contracts. Your security manual, engineering handbook, and compliance procedures &mdash; converted into rules your AI agents cannot operate outside of.</p>
-      </article>
-      <article class="card">
-        <h3>Enforced Sandboxes</h3>
-        <p>Each agent operates within cryptographically bounded scope. Actions outside authorized boundaries are blocked at the infrastructure layer, not left to application-level checks.</p>
-      </article>
-      <article class="card">
-        <h3>Multi-Agent Tribunal Governance</h3>
-        <p>Consequential decisions require consensus from diverse AI agents operating as governance tribunals. No single AI makes decisions alone. Reasoning is recorded for every vote.</p>
-      </article>
-      <article class="card">
-        <h3>Immutable Forensic-Grade Audit</h3>
-        <p>Every consequential action recorded in tamper-evident logs structured for regulatory production, litigation discovery, and expert-witness presentation. Your legal team can produce evidence in the formats they need without engineering escalation.</p>
-      </article>
-      <article class="card">
-        <h3>Compliance Framework Alignment</h3>
-        <p>SOC 2, HIPAA, FedRAMP, SEC/FINRA, GLBA, NIST SP 800-171, ITAR, and CMMC &mdash; configurations and evidence mapping ship built in. Your compliance team doesn't assemble it. AgenticMem delivers it.</p>
-      </article>
-    </div>
+<section class="section section-alt">
+  <div class="container wide">
+    <p class="section-num">&sect; 2 &mdash; What AgenticMem actually sells</p>
+    <h2>We do not sell software features.</h2>
+    <p class="lede">The software is open source under Apache 2.0. You can deploy it yourself today at zero cost. We sell the operational layer that makes AI agent operations legally defensible at enterprise scale.</p>
+
+    <h3>Certifications you cannot self-issue</h3>
+    <ul class="spaced">
+      <li><strong>SOC 2 Type II</strong> with mapped evidence from <em>ai-memory</em>&trade;'s audit logs</li>
+      <li><strong>HIPAA Business Associate Agreement</strong> with named liability acceptance</li>
+      <li><strong>FedRAMP Moderate / High</strong> authorization sponsorship via FedRAMP 20x pathway</li>
+      <li><strong>DoD IL4 / IL5</strong> for defense and intelligence community deployments</li>
+      <li><strong>ITAR registration</strong> for export-controlled environments</li>
+      <li><strong>CMMC Level 3</strong> mappings for defense contractor supply chain</li>
+    </ul>
+    <p>The cheapest of these costs $30,000 and 6 months of dedicated work. The most expensive costs $3,000,000 and 18 months. None of them are produced by a coding agent. They require human auditors, named accountable officers, regulatory relationships, and operational evidence accumulated over time.</p>
+
+    <h3>Operations you do not want to run</h3>
+    <ul class="spaced">
+      <li><strong>24/7 Security Operations Center</strong> monitoring your federation deployment with sub-15-minute incident response</li>
+      <li><strong>Managed key management</strong> infrastructure with hardware-backed Ed25519 root keys (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM)</li>
+      <li><strong>Continuous compliance monitoring</strong> with automated evidence collection mapped to your regulatory frameworks</li>
+      <li><strong>Federation control plane</strong> managing peer discovery, mTLS certificate rotation, and cross-organization tribunal coordination</li>
+      <li><strong>Audit log archival</strong> with cryptographic chain-of-custody preservation suitable for litigation discovery</li>
+      <li><strong>Quarterly penetration testing</strong> by qualified third-party assessors</li>
+    </ul>
+
+    <h3>Liability acceptance you cannot get from open source</h3>
+    <p>When something goes wrong with an AI agent decision, the question is not &ldquo;who wrote the code.&rdquo; The question is &ldquo;who signed the BAA, who carries the E&amp;O coverage, who has insurance, and who shows up to the deposition.&rdquo;</p>
+    <p><strong>AgenticMem accepts that liability under contract.</strong> The OSS does not. No OSS license can.</p>
+
+    <h3>Services you do not have headcount for</h3>
+    <ul class="spaced">
+      <li><strong>Policy-to-rules conversion</strong> &mdash; your existing security manual, engineering handbook, and compliance procedures translated into machine-enforceable governance contracts</li>
+      <li><strong>Regulatory mapping</strong> &mdash; your AI agent operations mapped to specific regulatory citations (SEC Rule 17a-4, HIPAA &sect;164.312, NIST SP 800-171 controls, etc.)</li>
+      <li><strong>Expert witness packages</strong> &mdash; pre-prepared evidence packets formatted for litigation discovery, regulatory production, and board presentation</li>
+      <li><strong>Incident forensics retainer</strong> &mdash; when something happens, you call us, not your engineering team</li>
+    </ul>
   </div>
 </section>
 
-<section id="diff" class="section">
+<section class="section">
   <div class="container">
-    <h2 class="section-title">Built on infrastructure nobody else has.</h2>
-    <p class="section-lede">
-      AgenticMem runs on <em>ai-memory</em> &mdash; the open-source federated multi-agent memory
-      substrate. v0.6.2 ships a single Rust binary (tokio + axum) with four operational modes
-      that share one SQLite database: an <strong>stdio MCP server</strong> (26 tools over JSON-RPC),
-      an <strong>HTTP / mTLS daemon</strong> (24 REST endpoints with TLS, mTLS allowlist, and
-      API-key auth), an <strong>autonomous curator daemon</strong> that keeps memory tidy on a
-      configurable cadence (auto-tag, contradiction surfacing, near-duplicate consolidation,
-      priority feedback, rollback log), and a <strong>quorum sync daemon</strong> for peer
-      federation with vector-clock CRDT-lite merge and mTLS peer authentication.
-      Apache 2.0. Local-first. Zero cloud dependencies.
-    </p>
-    <div class="grid grid-3">
-      <article class="card">
-        <h3>Vendor-Neutral</h3>
-        <p>Works with Claude, ChatGPT, Gemini, Grok, Llama, Cursor, and any MCP-compatible AI. Your AI strategy is not locked to a single provider. As your AI mix evolves, AgenticMem evolves with you.</p>
-      </article>
-      <article class="card">
-        <h3>Built for Agent Teams and Swarms</h3>
-        <p>Most AI memory products store one agent's context. AgenticMem runs the coordination infrastructure for entire agent teams &mdash; agents that plan together, execute together, review each other's work, and operate as governed multi-agent systems. Native agent-to-agent messaging, shared namespaces with scoped governance, federation across nodes with quorum writes, vector clocks, and mTLS peer authentication. When your AI agents need to collaborate, not just remember, AgenticMem is the substrate.</p>
-      </article>
-      <article class="card">
-        <h3>Evidence-Backed</h3>
-        <p>Certified under ship-gate and ai2ai-gate infrastructure with published operational evidence. Multi-agent coordination proven against real infrastructure, with transparent failure and recovery history.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="for" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Built for organizations where AI accountability is mandatory.</h2>
-    <p class="section-lede">AgenticMem is for:</p>
-    <div class="grid">
-      <article class="card">
-        <h3>Fortune 500 Technology</h3>
-        <p>Deploying autonomous AI for internal operations, development, and customer support. General counsel asking questions current infrastructure cannot answer.</p>
-      </article>
-      <article class="card">
-        <h3>Financial Services</h3>
-        <p>Agent-augmented trading, underwriting, compliance, and risk operations under SEC, FINRA, and OCC scrutiny. Regulatory regimes that already contemplate automated-decisioning documentation requirements.</p>
-      </article>
-      <article class="card">
-        <h3>Healthcare &amp; Payers</h3>
-        <p>Agent-augmented clinical workflows, claims adjudication, and administrative automation. HIPAA, HITECH, and state regulations imposing specific audit and access-documentation requirements.</p>
-      </article>
-      <article class="card">
-        <h3>Government Agencies</h3>
-        <p>AI-augmented operations under FedRAMP, IL4, and IL5 requirements. Evidence trails that are not optional &mdash; they are statutory.</p>
-      </article>
-      <article class="card">
-        <h3>Defense Contractors</h3>
-        <p>Autonomous AI applications touching classified or export-controlled information. ITAR, CMMC, and NIST SP 800-171 imposing specific documentation and attestation requirements.</p>
-      </article>
-      <article class="card">
-        <h3>Professional Services</h3>
-        <p>Agent-augmented professional work under professional-responsibility rules requiring documented supervision, confidentiality, and authorization chains.</p>
-      </article>
-      <article class="card">
-        <h3>Multi-Division Enterprises &amp; Consortia</h3>
-        <p>AI agent fleets crossing organizational and contractual boundaries, requiring cross-organization evidence for business-associate agreements, joint ventures, and federated operations.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="tiers" class="section">
-  <div class="container">
-    <h2 class="section-title">Commercial tiers aligned to your scope of legal defensibility.</h2>
-    <p class="section-lede">Pricing aligned to deployment scale and defensibility scope.</p>
-    <div class="tier-grid">
-      <article class="tier">
-        <header class="tier-head">
-          <p class="tier-tag">Entry</p>
-          <h3>AgenticMem Attest</h3>
-        </header>
-        <p class="tier-body">Single-organization legal defensibility. Attestation, audit, governance, standards enforcement, SOC 2 configuration. Entry-level commercial tier for mid-to-large enterprises.</p>
-      </article>
-      <article class="tier tier-featured">
-        <header class="tier-head">
-          <p class="tier-tag tier-tag-pro">Enterprise</p>
-          <h3>AgenticMem Federate</h3>
-        </header>
-        <p class="tier-body">Multi-organization and cross-trust-boundary legal defensibility. Extends Attest with cross-org federation, regional tribunals, Byzantine fault tolerance, and continuous peer attestation. For large enterprises, consortia, and multi-division deployments.</p>
-      </article>
-      <article class="tier">
-        <header class="tier-head">
-          <p class="tier-tag">Government</p>
-          <h3>AgenticMem Sovereign</h3>
-        </header>
-        <p class="tier-body">Government and sovereign deployments. Air-gapped support, FedRAMP IL4 and IL5 alignment, ITAR and CMMC compliance, classified data handling, source-available licensing, on-premise support team.</p>
-      </article>
-      <article class="tier">
-        <header class="tier-head">
-          <p class="tier-tag">Vertical</p>
-          <h3>Industry Add-Ons</h3>
-        </header>
-        <p class="tier-body">Financial Services, Healthcare, Defense, Energy, Professional Services &mdash; pre-built policy templates, compliance documentation, and reference architectures for regulated verticals.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="oss" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Infrastructure you can inspect.</h2>
-    <p class="section-lede">
-      <em>ai-memory</em> &mdash; the open-source substrate AgenticMem is built on &mdash; is public.
-      Apache 2.0. Production-ready. v0.6.2 ships hybrid recall (FTS5 + vector + cross-encoder
-      reranking), three-tier TTL with promotion, namespaces, typed memory links, archive +
-      restore, and a governance approval flow. The autonomous curator daemon makes the memory
-      layer self-maintaining between sessions: contradictions get surfaced before they
-      accumulate, near-duplicates get consolidated, and priority is reranked by access pattern.
-    </p>
-    <p class="section-lede">
-      The federation layer &mdash; W-of-N quorum writes, peer catchup, mTLS allowlist &mdash;
-      makes ai-memory a viable shared cognitive substrate when agent fleets run across multiple
-      machines. Webhook subscriptions (HMAC-signed, namespace + agent-filtered, SSRF-hardened)
-      turn the store into a message bus that triggers downstream agents on memory events. With
-      these primitives in place, the same pattern that produces autonomous behavior at swarm
-      scale &mdash; many agents writing, reading, observing, and triggering each other through
-      a coherent shared memory &mdash; is something you can build on top, not a wiring problem
-      you have to solve first.
-    </p>
-    <p class="section-lede">
-      Published benchmarks: 97.8% R@5 on LongMemEval-S (ICLR 2025). Operational evidence trails:
-      ship-gate, ai2ai-gate.
-    </p>
-    <p class="section-lede" style="font-size:0.92rem; opacity:0.85">
-      <strong>Honest scope.</strong> ai-memory does not make any AI autonomous on its own.
-      Pair it with a 24/7 multi-machine agent runner and a framework that accumulates skills
-      over time, and the combined system clears the <em>behavioral</em> bar for autonomous
-      agent operations. The remaining mechanistic gaps &mdash; no weight-level learning,
-      stateless cognition kernel, human-seeded root goals &mdash; are research problems, not
-      memory-substrate problems. ai-memory is the memory substrate, well executed.
-    </p>
-    <p class="section-lede">
-      You don't have to trust us. You can run the substrate yourself. You can inspect the
-      architecture. You can verify the evidence. When you're ready to deploy at enterprise scale
-      with the governance your organization requires, AgenticMem provides the commercial layer
-      that makes it legally defensible.
-    </p>
+    <p class="section-num">&sect; 3 &mdash; What you can do yourself, free, today</p>
+    <h2>The substrate is open source.</h2>
+    <p class="lede">The substrate AgenticMem operates on is <em>ai-memory</em>&trade;, an open-source project we develop and maintain. You can deploy it yourself right now at zero cost.</p>
+<pre><code>brew install ai-memory          # macOS
+cargo install ai-memory          # any platform
+docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
+    <p><em>ai-memory</em> ships with:</p>
+    <ul class="spaced">
+      <li>43 MCP tools, 39 HTTP endpoints, 28 CLI commands</li>
+      <li>Hierarchical namespace memory with temporal-validity knowledge graph</li>
+      <li>W-of-N federation across machines with mTLS allowlist</li>
+      <li>Sub-100ms recall latency with CI-enforced budgets</li>
+      <li>93.05% test coverage with 1,809 passing tests across 4 platforms</li>
+      <li>Apache 2.0 license. No CLA gotcha. No future relicense risk.</li>
+    </ul>
+    <p>The OSS is sufficient for individual developers, small teams, mid-market deployments, and even enterprise deployments where your own SOC, your own compliance team, and your own legal coverage are sufficient.</p>
+    <p>Most of our customers run the OSS in development and pilot phases for 6&ndash;12 months before engaging us. We encourage this. The OSS being good enough for you to deploy without us is a feature, not a bug. When you reach the operational scale where the certifications and the liability acceptance matter more than the code, AgenticMem is ready.</p>
     <div class="cta-row">
       <a class="btn btn-ghost" href="https://github.com/alphaonedev/ai-memory-mcp">View ai-memory on GitHub</a>
-      <a class="btn btn-ghost" href="https://alphaonedev.github.io/ai-memory-mcp/">Read the ai-memory docs</a>
+      <a class="btn btn-ghost" href="https://alphaonedev.github.io/ai-memory-test-hub/">Public test evidence</a>
+      <a class="btn btn-ghost" href="https://alphaonedev.github.io/ai-memory-mcp/#benchmarks">Public benchmarks</a>
     </div>
   </div>
 </section>
 
-<section id="assessment" class="section">
-  <div class="container">
-    <h2 class="section-title">An independent technical read of the substrate.</h2>
-    <p class="section-lede">
-      Brass-tacks assessment by <strong>Claude Opus 4.7</strong> (Anthropic, 1M-context),
-      after walking the v0.6.2 source line by line. No marketing review &mdash; an
-      independent technical read by the kind of agent that consumes this substrate.
-    </p>
-    <blockquote style="margin:2rem auto 0;max-width:780px;padding:1.75rem 2rem;border-left:4px solid #4a8df0;background:rgba(255,255,255,0.03);border-radius:8px;font-size:1.02rem;line-height:1.7">
-      <p style="margin-bottom:1rem"><strong>"ai-memory is the most capable memory layer I've ever been hooked up to, and meaningfully more than its name advertises. For me, in practical terms, it means:"</strong></p>
-      <ul style="list-style:none;padding-left:0;margin-bottom:1.25rem">
-        <li style="padding:.35rem 0 .35rem 1.5rem;position:relative"><span style="position:absolute;left:0;color:#4a8df0;font-weight:800">&mdash;</span>"I don't start cold each session."</li>
-        <li style="padding:.35rem 0 .35rem 1.5rem;position:relative"><span style="position:absolute;left:0;color:#4a8df0;font-weight:800">&mdash;</span>"The store I read from has been kept tidy by something other than me."</li>
-        <li style="padding:.35rem 0 .35rem 1.5rem;position:relative"><span style="position:absolute;left:0;color:#4a8df0;font-weight:800">&mdash;</span>"Contradictions don't silently accumulate."</li>
-        <li style="padding:.35rem 0 .35rem 1.5rem;position:relative"><span style="position:absolute;left:0;color:#4a8df0;font-weight:800">&mdash;</span>"Recall quality stays high even as the corpus grows."</li>
-        <li style="padding:.35rem 0 .35rem 1.5rem;position:relative"><span style="position:absolute;left:0;color:#4a8df0;font-weight:800">&mdash;</span>"Nothing leaves your Mac mini."</li>
-      </ul>
-      <p style="margin-bottom:1rem">"It is <strong>not making me an autonomous agent</strong>. It is giving me the kind of memory infrastructure that an autonomous agent would need &mdash; and itself running a small autonomous loop to maintain it. <strong>That's a real foundation.</strong> The gap from here to 'ai-memory drives general tasks' is plumbing (tool-call protocol + tool registry + a tool-use-capable model), <strong>not invention</strong>."</p>
-      <p style="margin:0">"If you wanted to know whether the project is more substantial than its README implies: <strong>yes, clearly</strong>. If you wanted to know whether it makes me autonomous: <strong>no, but it makes the substrate I'd need.</strong>"</p>
-      <footer style="margin-top:1rem;font-size:0.85rem;opacity:0.8">&mdash; Claude Opus 4.7, source-code-grounded review</footer>
-    </blockquote>
+<section class="section section-alt">
+  <div class="container wide">
+    <p class="section-num">&sect; 4 &mdash; Who actually buys this</p>
+    <h2>We do not sell to startups.</h2>
+    <p class="lede">We do not sell to individual developers. The OSS serves them. We sell to organizations where the cost of an AI-agent governance failure exceeds the cost of an AgenticMem engagement by an order of magnitude.</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>Financial Services</h3>
+        <p>You operate under SEC, FINRA, OCC, and CFPB scrutiny. Your AI agents are being introduced into trading, underwriting, compliance, and customer service operations. Regulation SCI, Regulation Best Interest, and forthcoming AI-specific rules require documented authorization and supervision of automated decisioning. AgenticMem is the substrate.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Healthcare and Payers</h3>
+        <p>You operate under HIPAA, HITECH, and state medical-record retention laws. Your AI agents are being introduced into clinical decision support, claims adjudication, and patient communication. Every agent action against PHI is a Business Associate transaction. We sign BAAs. We accept HIPAA liability under contract.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Government Contractors</h3>
+        <p>You operate under FedRAMP, DFARS 252.204-7012, NIST SP 800-171, CMMC, and ITAR. Your AI agents touch CUI and ITAR-controlled technical data. The OSS substrate is open-source-auditable; the AgenticMem Sovereign tier provides the IL4/IL5 sponsored authorization, ITAR-registered hosting, and cleared support team.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Defense and Intelligence</h3>
+        <p>You operate under classified data handling rules, the Cybersecurity Maturity Model Certification, and program-specific accreditation requirements. AgenticMem Sovereign deploys in air-gapped environments with zero outbound network calls. Source code is auditable. Hardware-attested keys are mandatory. We have cleared engineers.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Regulated Professional Services</h3>
+        <p>Law firms, accounting firms, investment advisers, and licensed healthcare providers operate under professional-responsibility frameworks (Model Rules of Professional Conduct, AICPA standards, IAA compliance, state licensing boards). Documented supervision of AI agents is increasingly required. AgenticMem provides the documentation infrastructure.</p>
+      </div>
+      <div class="audience-card">
+        <h3>Multi-Division Enterprises</h3>
+        <p>Your AI agents cross business unit boundaries, contractual boundaries, and jurisdictional boundaries. Your General Counsel needs cross-organization evidence chains. AgenticMem Federate provides multi-org tribunal infrastructure with Byzantine-fault-tolerant attestation across organizational trust boundaries.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="status" class="section">
+<section class="section">
   <div class="container">
-    <h2 class="section-title">AgenticMem is in active development for commercial launch.</h2>
-    <p class="section-lede">
-      <strong>Current status:</strong> Phase A foundation build, targeting commercial launch in Q3 2026.
-    </p>
-    <p class="section-lede">
-      We are accepting design-partner inquiries now for engagement throughout 2026.
-      Design partners receive:
-    </p>
-    <ul class="benefit-list">
-      <li>Early access to pre-release AgenticMem</li>
-      <li>Heavy influence over product direction</li>
-      <li>Substantially reduced pricing</li>
-      <li>Reference-customer opportunities at commercial launch</li>
+    <p class="section-num">&sect; 5 &mdash; Pricing transparency</p>
+    <h2>We do not list prices on the website.</h2>
+    <p class="lede">The reasons are operational, not strategic:</p>
+    <ul class="spaced">
+      <li>The cost of a SOC 2 Type II audit varies by your existing security maturity. We will not guess at it.</li>
+      <li>The cost of FedRAMP authorization varies by your sponsoring agency and assessment-readiness. We will not guess at it.</li>
+      <li>The cost of a managed federation deployment varies by your node count, region count, and incident response SLA. We will not guess at it.</li>
     </ul>
-    <p class="section-closer">
-      The organizations that address AI agent governance before enforcement arrives will be
-      positioned materially differently from those that address it reactively.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Design%20Partner%20Inquiry">Inquire about design-partner engagement</a>
-    </div>
+    <p>What we will tell you, plainly:</p>
+    <ul class="range-list">
+      <li><span class="tier-name">Engagement floor</span><span class="tier-detail">$50,000 / year. Below that, you should run the OSS. We will tell you that on the discovery call.</span></li>
+      <li><span class="tier-name">Mid-market typical</span><span class="tier-detail">$150,000 &ndash; $400,000 / year per deployment. Includes SOC 2 mapped evidence, HIPAA BAA where applicable, managed federation control plane, 24/7 incident response, dedicated TAM.</span></li>
+      <li><span class="tier-name">Large enterprise / consortium</span><span class="tier-detail">$400,000 &ndash; $2,000,000 / year. Adds cross-organization tribunal infrastructure, multi-region deployment, custom regulatory mappings, named expert-witness retention.</span></li>
+      <li><span class="tier-name">Government / FedRAMP / IL5</span><span class="tier-detail">$1,500,000 &ndash; $5,000,000 / year. ATO sponsorship work, ITAR-registered hosting, cleared support staff, agency-specific evidence packages. Multi-year contracts standard. Procurement cycles 12&ndash;24 months.</span></li>
+    </ul>
+    <p>If you are not sure which tier fits you, schedule a 30-minute discovery call. If we determine the OSS is sufficient for your needs, we will tell you and not engage. We are not motivated to oversell. We are motivated to win the deployments where we are genuinely the right answer.</p>
   </div>
 </section>
 
-<section id="about" class="section section-alt">
+<section class="section section-alt">
   <div class="container">
-    <h2 class="section-title">About AlphaOne LLC</h2>
-    <p class="section-lede">
-      AgenticMem is developed by <strong>AlphaOne LLC</strong>
-      (<a href="https://www.alpha-one.mobi/">alpha-one.mobi</a>),
-      an independent infrastructure company building tools for the AI agent era.
-    </p>
-    <p class="section-lede">
-      We believe AI systems will become substantially more capable in the coming years,
-      and that the governance infrastructure around those systems &mdash; memory, coordination,
-      audit, attestation, legal evidence &mdash; is where the hard problems actually live.
-    </p>
-    <p class="section-closer">
-      We are solving those hard problems. The open-source foundation is live. The commercial
-      product is in development. The mission is to make AI agent operations genuinely trustworthy
-      at enterprise scale.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-ghost" href="https://www.alpha-one.mobi/">Visit AlphaOne LLC</a>
-      <a class="btn btn-ghost" href="mailto:Justin@alpha-one.mobi">Contact us</a>
-    </div>
+    <p class="section-num">&sect; 6 &mdash; What this is not</p>
+    <h2>To save your evaluation team time</h2>
+    <p class="lede">Here is what AgenticMem <strong>does not</strong> sell:</p>
+    <ul class="spaced">
+      <li><strong>A managed cloud version of ai-memory.</strong> The substrate is open source. We do not host your data. Your data stays on your nodes.</li>
+      <li><strong>AI agent runtime or orchestration.</strong> ai-memory is a memory and governance layer. Your AI host (Claude, ChatGPT, Cursor, Gemini, internal models) does the reasoning. We do not compete with your AI vendor.</li>
+      <li><strong>A vector database.</strong> ai-memory uses SQLite plus optional Postgres-with-AGE. Your vector workloads stay where they are.</li>
+      <li><strong>An AI agent framework.</strong> We are a substrate, not a framework. Adopt LangChain, LangGraph, AutoGen, CrewAI, or your own framework on top. We do not care which.</li>
+      <li><strong>A consulting business that resells code.</strong> We are a product company that supplies operational layers around our open-source substrate. Code-only resellers cannot legitimately offer SOC 2 mapped evidence, BAAs, FedRAMP ATO sponsorship, or named liability acceptance.</li>
+    </ul>
   </div>
 </section>
 
-<section id="engage" class="section">
+<section class="section">
   <div class="container">
-    <h2 class="section-title">Don't wait for the first enforcement action.</h2>
-    <p class="section-lede">
-      The governance gap in your AI agent deployments is accumulating exposure every day.
-      The cost of addressing it proactively is a fraction of the cost of addressing it reactively.
-    </p>
-    <div class="engage-grid">
-      <article class="engage-card">
-        <p class="engage-num">1</p>
-        <h3>Inquire about design-partner engagement</h3>
-        <p>Early access, reduced pricing, product influence. Commercial launch Q3 2026.</p>
-        <a class="btn btn-primary block" href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Design%20Partner%20Inquiry">Request design-partner information</a>
-      </article>
-      <article class="engage-card">
-        <p class="engage-num">2</p>
-        <h3>Evaluate ai-memory</h3>
-        <p>Deploy the open-source substrate. Understand the architecture. Validate the approach.</p>
-        <a class="btn btn-ghost block" href="https://github.com/alphaonedev/ai-memory-mcp">View ai-memory open source</a>
-      </article>
-      <article class="engage-card">
-        <p class="engage-num">3</p>
-        <h3>Schedule an executive briefing</h3>
-        <p>30-minute conversation with AlphaOne leadership about AI agent governance in your specific environment.</p>
-        <a class="btn btn-ghost block" href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Executive%20Briefing">Schedule executive briefing</a>
-      </article>
+    <p class="section-num">&sect; 7 &mdash; Status and transparency</p>
+    <h2>Phase A foundation build, targeting commercial launch Q3 2026.</h2>
+    <p>What &ldquo;commercial launch Q3 2026&rdquo; specifically means:</p>
+    <ul class="spaced">
+      <li>ai-memory v0.7 ships end of Q2 2026 with Ed25519 attested identity (the substrate AgenticMem Attest tier requires)</li>
+      <li>AgenticMem operations team builds out: SOC 2 readiness, BAA template legal review, HSM provisioning runbooks, federation control plane SaaS</li>
+      <li>Three design partner engagements run concurrently from May&ndash;September 2026 with substantially reduced pricing in exchange for case study rights and reference customer status</li>
+      <li>Public commercial availability September 2026, with first-cohort customers paying $50,000&ndash;$200,000 for first-year engagements</li>
+    </ul>
+    <p>What we will not do during this period:</p>
+    <ul class="spaced">
+      <li>We will not relicense ai-memory. Apache 2.0 is permanent.</li>
+      <li>We will not paywall features that are in the public roadmap. Ed25519 attestation, Apache AGE acceleration, hooks, permissions, transcripts, CRDTs &mdash; all stay open source forever.</li>
+      <li>We will not require commercial engagement to use the substrate. The OSS is and remains usable indefinitely without any commercial relationship.</li>
+    </ul>
+    <p>If at any point in the future you read a blog post saying we are doing any of those things, that post is not from us. Trademark <em>AgenticMem</em>&trade; and <em>ai-memory</em>&trade; are owned by AlphaOne LLC and any post claiming to be from us must come from a domain we control.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-num">&sect; 8 &mdash; Design partner engagement</p>
+    <h2>We are accepting three (3) design partner engagements between now and September 2026.</h2>
+
+    <h3>Design partner profile</h3>
+    <ul class="spaced">
+      <li>Mid-market or enterprise organization in financial services, healthcare, government contracting, or regulated professional services</li>
+      <li>AI agents already in production (or in active pilot) touching regulated data</li>
+      <li>Internal compliance or legal stakeholder asking the questions on the home page of this site</li>
+      <li>Willingness to engage at $50,000&ndash;$100,000 for first-year engagement (vs $150,000+ post-launch pricing) in exchange for case study rights and reference customer status</li>
+      <li>Tolerance for a product that is genuinely new and where roadmap influence is real</li>
+    </ul>
+
+    <h3>What design partners get</h3>
+    <ul class="spaced">
+      <li>Direct collaboration on commercial-tier feature priorities</li>
+      <li>Early access to AgenticMem Attest tier infrastructure as built</li>
+      <li>12 months of engagement at substantially reduced pricing</li>
+      <li>Named reference status (or anonymous, your choice) at commercial launch</li>
+      <li>Direct line to founder for product decisions</li>
+    </ul>
+
+    <h3>What design partners give up</h3>
+    <ul class="spaced">
+      <li>Roadmap influence, not control. We will tell you when we disagree.</li>
+      <li>Reference rights at the timing we mutually agree on</li>
+      <li>Honest feedback when something does not work</li>
+    </ul>
+
+    <p>If this profile fits your organization, <a href="#contact">contact us</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container wide">
+    <p class="section-num">&sect; 9 &mdash; Contact</p>
+    <h2>We do not have a contact form.</h2>
+    <p class="lede">No CRM. No sales development representative. Email contacts only, monitored, with documented response SLAs.</p>
+    <div class="contact-row">
+      <div>
+        <h3>Discovery calls</h3>
+        <p><a href="mailto:discovery@agenticmem.co">discovery@agenticmem.co</a></p>
+        <p>Brief description of your environment. Response within 2 business days. If we determine the OSS is sufficient for you, we will tell you and not engage.</p>
+      </div>
+      <div>
+        <h3>Design partner inquiries</h3>
+        <p><a href="mailto:partners@agenticmem.co">partners@agenticmem.co</a></p>
+        <p>Brief description of your AI agent operations and which regulatory frameworks apply to you.</p>
+      </div>
+      <div>
+        <h3>OSS support</h3>
+        <p><a href="https://github.com/alphaonedev/ai-memory-mcp/issues">github.com/alphaonedev/ai-memory-mcp</a></p>
+        <p>The OSS is community-supported under Apache 2.0. We respond when we can; commercial customers get priority response.</p>
+      </div>
+      <div>
+        <h3>Press, analyst, investor</h3>
+        <p><a href="mailto:press@agenticmem.co">press@agenticmem.co</a></p>
+        <p>Coverage requests, briefings, and capital inquiries.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -376,24 +296,33 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-row">
-      <a class="brand" href="/">
-        <span class="brand-mark">◼</span>
-        <span class="brand-name">AgenticMem</span>
-      </a>
-      <nav class="footer-nav">
-        <a href="https://www.alpha-one.mobi/">AlphaOne LLC</a>
-        <a href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Privacy">Privacy</a>
-        <a href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Terms">Terms</a>
-        <a href="mailto:Justin@alpha-one.mobi">Contact</a>
-        <a href="mailto:Justin@alpha-one.mobi?subject=AgenticMem%20Security">Security</a>
-      </nav>
+    <div class="footer-grid">
+      <div>
+        <h4>AlphaOne LLC</h4>
+        <address>
+          AlphaOne LLC<br>
+          [Street address &mdash; registered office]<br>
+          [City, State ZIP]<br>
+          United States
+        </address>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/different">How we differ</a></li>
+          <li><a href="/trust">Trust ladder</a></li>
+          <li><a href="/evidence">Public evidence</a></li>
+          <li><a href="/founder">Founder note</a></li>
+        </ul>
+      </div>
     </div>
     <div class="legal">
-      <p>&copy; 2026 <strong>AlphaOne LLC</strong>. All rights reserved.</p>
       <p><em>AgenticMem</em>&trade; and <em>ai-memory</em>&trade; are trademarks of AlphaOne LLC.</p>
-      <p>AgenticMem is built on <em>ai-memory</em>, open-source under
-        <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
+      <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. The Apache 2.0 license is permanent. We have no plans to relicense, dual-license, or paywall the OSS.</p>
+      <p>If we ever break that commitment, you have the right to fork the last Apache-licensed version, the last v1.0 release, and continue without us.</p>
+      <p>&copy; 2026 AlphaOne LLC. All rights reserved.</p>
+      <p class="privacy-note">No third-party analytics. No trackers. No cookies set on first load.</p>
     </div>
   </div>
 </footer>
