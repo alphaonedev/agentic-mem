@@ -681,6 +681,22 @@ p.callout strong { color: var(--charcoal); font-weight: 700; }
 .contact-row a { color: var(--charcoal); text-decoration-color: var(--accent); }
 .contact-row a:hover { color: var(--accent); }
 
+/* ============================================================ HEADER STATUS PILL */
+
+.status-pill-header {
+  display: inline-block;
+  background: #f1ede5;
+  color: #6b5326;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 8pt;
+  margin-left: 6pt;
+  letter-spacing: 0.4pt;
+  text-transform: uppercase;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
 /* ============================================================ STATUS PILLS */
 
 .status-pill {
