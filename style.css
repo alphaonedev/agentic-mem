@@ -601,6 +601,50 @@ p.callout strong { color: var(--charcoal); font-weight: 700; }
   .range-list li { grid-template-columns: 1fr; gap: 4px; }
 }
 
+/* ============================================================ CATEGORY GRID
+   (positioning.html — five neutral category cards, no competitor names) */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 1.6em 0;
+  max-width: none;
+}
+.category-card {
+  background: var(--soft-bg);
+  color: var(--text);
+  padding: 22px 24px;
+  position: relative;
+  border: 1px solid var(--rule);
+}
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 48px; height: 2px;
+  background: var(--charcoal);
+}
+.category-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--headings);
+}
+.category-card p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.93rem;
+  max-width: none;
+  line-height: 1.55;
+}
+.category-card em {
+  display: block;
+  margin-top: 0.6em;
+  color: var(--text-mute);
+  font-size: 0.85rem;
+  font-style: normal;
+}
+
 /* ============================================================ AUDIENCE GRID
    OSS / open / available pattern: soft-bg surface, hairline border,
    charcoal keystone tick top-left. */
