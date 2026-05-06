@@ -1,3 +1,9 @@
+<!--
+  Marketing surface style rules — do not delete.
+  No acceptance, future-contract, or commitment language on any page.
+  See full table at: docs/STYLE-NO-ACCEPTANCE.md
+-->
+
 # agenticmem.co
 
 Marketing site for **AgenticMem** — the commercially supported distribution of

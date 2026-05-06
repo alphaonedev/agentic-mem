@@ -19,10 +19,11 @@
     <a class="brand" href="/">
       <span class="brand-mark"></span>
       <span class="brand-name">AgenticMem<span class="brand-tm">&trade;</span></span>
+      <span class="status-pill-header">Phase A &middot; pre-commercial &middot; launch Q3 2026</span>
     </a>
     <nav class="nav">
       <a href="/">Home</a>
-      <a href="/different">How we differ</a>
+      <a href="/positioning">How we position</a>
       <a href="/trust" class="active">Trust ladder</a>
       <a href="/evidence">Evidence</a>
       <a href="/founder">Founder note</a>
@@ -72,10 +73,10 @@
         <div class="step-head">
           <span class="step-num">Step 3</span>
           <span class="step-title">OSS Attested</span>
-          <span class="step-meta">v0.7 end Q2 2026 &middot; free &middot; Apache 2.0</span>
+          <span class="step-meta">v0.7 target end Q2 2026 &middot; free &middot; Apache 2.0</span>
           <span class="status-pill status-pending">In flight</span>
         </div>
-        <p class="step-body">Adds Ed25519 cryptographic attestation. Every memory link write is signed end-to-end. Verifiable provenance from the originating agent through every replication hop.</p>
+        <p class="step-body">When v0.7 ships (target end Q2 2026), this step will add Ed25519 cryptographic attestation. Every memory link write will be signed end-to-end, providing verifiable provenance from the originating agent through every replication hop. Today (current OSS release), the substrate ships with mTLS authentication and a fingerprint allowlist; cryptographic attestation of individual writes is the v0.7 milestone.</p>
         <p class="step-use"><strong>Use case:</strong> regulated environments where the OSS substrate is sufficient and your internal compliance team can map the evidence to your frameworks.</p>
       </li>
 
@@ -83,21 +84,21 @@
         <div class="step-head">
           <span class="step-num">Step 4</span>
           <span class="step-title">AgenticMem Attest</span>
-          <span class="step-meta">commercial &middot; Q3 2026 launch</span>
-          <span class="status-pill status-pending">In flight</span>
+          <span class="step-meta">commercial (pre-launch) &middot; Q3 2026 launch</span>
+          <span class="status-pill status-pending">Pre-commercial</span>
         </div>
-        <p class="step-body">Adds: hardware-backed key storage (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM); SOC 2 Type II mapped evidence; HIPAA Business Associate Agreement; managed key rotation; 24/7 incident response; dedicated TAM.</p>
-        <p class="step-use"><strong>Use case:</strong> enterprises in regulated industries (financial services, healthcare, regulated professional services) that need commercial counterparty for compliance and liability acceptance.</p>
+        <p class="step-body">At commercial launch (Q3 2026), AgenticMem Attest is being built to add to OSS Attested: hardware-backed key storage (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM); SOC 2 Type II evidence-mapping for your auditor; HIPAA Business Associate Agreement scope where applicable to the customer engagement (terms in the customer agreement); managed key rotation; severity-tiered managed-SOC response targets specified in the customer agreement; dedicated TAM. All items are subject to the timelines and conditions on the Evidence page.</p>
+        <p class="step-use"><strong>Use case:</strong> enterprises in regulated industries (financial services, healthcare, regulated professional services) that need a commercial counterparty for compliance and customer-agreement scope.</p>
       </li>
 
       <li class="tile-commercial">
         <div class="step-head">
           <span class="step-num">Step 5</span>
           <span class="step-title">AgenticMem Federate</span>
-          <span class="step-meta">commercial &middot; Q4 2026 launch</span>
-          <span class="status-pill status-pending">In flight</span>
+          <span class="step-meta">commercial (pre-launch) &middot; Q4 2026 launch</span>
+          <span class="status-pill status-pending">Pre-commercial</span>
         </div>
-        <p class="step-body">Adds (over Attest): cross-organization federation control plane; multi-region tribunal infrastructure with Byzantine fault tolerance; cross-trust-boundary key management; dedicated security operations center; quarterly third-party penetration testing; incident forensics retainer.</p>
+        <p class="step-body">At commercial launch (Q4 2026), AgenticMem Federate is being built to add to Attest: cross-organization federation control plane; multi-region quorum-write infrastructure using W-of-N consensus and an mTLS-authenticated peer mesh; cross-trust-boundary key management; managed Security Operations Center; planned quarterly third-party penetration testing; technical-personnel availability for incident response, scoped by the customer agreement applicable to the engagement. Specific fault-tolerance properties are documented in the architecture references on the Evidence page.</p>
         <p class="step-use"><strong>Use case:</strong> large enterprises, consortia, multi-division deployments, joint ventures.</p>
       </li>
 
@@ -105,10 +106,10 @@
         <div class="step-head">
           <span class="step-num">Step 6</span>
           <span class="step-title">AgenticMem Sovereign</span>
-          <span class="step-meta">commercial &middot; targeted late 2027 (FedRAMP-dependent)</span>
+          <span class="step-meta">commercial (pre-launch) &middot; target late 2027 &mdash; FedRAMP-dependent</span>
           <span class="status-pill status-future">Charter</span>
         </div>
-        <p class="step-body">Adds (over Federate): FedRAMP Moderate or High authorization sponsorship via FedRAMP 20x pathway; DoD IL4 / IL5 mappings; ITAR registration; air-gap deployment kits; cleared support team; agency-specific evidence packages.</p>
+        <p class="step-body">When delivered (target late 2027), AgenticMem Sovereign is planned to add to Federate: FedRAMP Moderate or High authorization sponsorship via the FedRAMP 20x pathway (subject to GSA process and a sponsoring agency); DoD Impact Level 4 / 5 mappings; ITAR registration with DDTC; air-gap deployment kits; cleared support staff; agency-specific evidence packages. As of 2026-05, no AgenticMem personnel hold federal security clearances; clearance is targeted to be initiated through the sponsoring-agency process at engagement.</p>
         <p class="step-use"><strong>Use case:</strong> government agencies, defense contractors, intelligence community deployments.</p>
       </li>
 
@@ -118,7 +119,7 @@
     <p>FedRAMP authorization timelines are 6&ndash;18 months minimum, dependent on agency sponsor availability and 3PAO assessment queue. We are pursuing FedRAMP 20x (the new automated pathway), which targets ~3 months for Low and Moderate impact levels. We cannot guarantee a specific authorization date because the FedRAMP process is governed by the GSA and the sponsoring agency, not by us. We will publish status updates publicly throughout the process.</p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="/#contact">Inquire about commercial deployment</a>
+      <a class="btn btn-primary" href="/#contact">Pre-launch inquiry &mdash; discovery call</a>
       <a class="btn btn-ghost" href="/evidence">Verify the evidence</a>
     </div>
   </div>
@@ -142,17 +143,21 @@
         <h4>Site</h4>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/different">How we differ</a></li>
+          <li><a href="/positioning">How we position</a></li>
           <li><a href="/trust">Trust ladder</a></li>
           <li><a href="/evidence">Public evidence</a></li>
           <li><a href="/founder">Founder note</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC (Wyoming); USPTO application pending. <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC (Delaware); USPTO application pending. AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
+      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC, a Wyoming limited liability company (USPTO trademark application pending; current serial and status verifiable at <a href="https://tsdr.uspto.gov">tsdr.uspto.gov</a>). <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC, a Delaware limited liability company (USPTO trademark application pending; current serial and status verifiable at <a href="https://tsdr.uspto.gov">tsdr.uspto.gov</a>). AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
       <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. The license is permanent.</p>
+      <p><strong>Forward-looking statements.</strong> This site refers to certifications, authorizations, customer-agreement terms, insurance, SLAs, and product features that are planned but not yet in place &mdash; including SOC 2 Type II, HIPAA Business Associate Agreement scope, FedRAMP authorization, ITAR registration, DoD Impact Levels, CMMC mappings, hardware-attested keys, the AgenticMem 24/7 SOC, and the AgenticMem Attest, Federate, and Sovereign commercial tiers. The Evidence page lists current status of each. This site is informational only. Nothing on this site is a customer agreement, a term of any customer agreement, a representation about a customer agreement, or a promise of any specific delivery date.</p>
       <p>&copy; 2026 AgenticMem LLC. All rights reserved.</p>
+      <p><strong>Not legal advice.</strong> Nothing on this site is legal advice. Engage your own counsel for legal interpretation.</p>
       <p class="privacy-note">No third-party analytics. No trackers. No cookies. Fonts self-hosted; no external requests on page load.</p>
     </div>
   </div>

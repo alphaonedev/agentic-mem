@@ -19,10 +19,11 @@
     <a class="brand" href="/">
       <span class="brand-mark"></span>
       <span class="brand-name">AgenticMem<span class="brand-tm">&trade;</span></span>
+      <span class="status-pill-header">Phase A &middot; pre-commercial &middot; launch Q3 2026</span>
     </a>
     <nav class="nav">
       <a href="/">Home</a>
-      <a href="/different">How we differ</a>
+      <a href="/positioning">How we position</a>
       <a href="/trust">Trust ladder</a>
       <a href="/evidence" class="active">Evidence</a>
       <a href="/founder">Founder note</a>
@@ -51,7 +52,7 @@
         <li>Apache 2.0 license, full source available</li>
         <li>All commits signed with GPG key SHA256 <code>tkfDATcb8+hjhJeI3LvDbwAaks/8QqBMRr6oOWz6iBA</code></li>
         <li>Reproducible builds documented</li>
-        <li>No CLA-and-relicense gotcha &mdash; Apache 2.0 is permanent</li>
+        <li>No contributor-license-agreement is required; contributions are received under the Developer Certificate of Origin. Apache 2.0 is permanent. An OSS Permanence Pledge describing the open-source-license posture is to be published in the same repository.</li>
       </ul>
     </div>
 
@@ -72,7 +73,7 @@
         <li>93.05% line coverage (42,894 / 46,099 lines)</li>
         <li>1,809 tests passing, 0 failed, 0 ignored</li>
         <li>Coverage gate enforced in CI: <code>cargo llvm-cov --fail-under-lines 92</code></li>
-        <li>Per-module breakdown public: 7 modules at 100%, 39 of 47 &ge; 90%</li>
+        <li>Per-module breakdown public (as of v0.6.4): 7 modules at 100%, 39 of 47 &ge; 90%.</li>
       </ul>
     </div>
 
@@ -119,17 +120,29 @@
     <h2>What we have not yet certified</h2>
     <p class="lede">Honest disclosure of what is not yet in place:</p>
     <ul class="spaced">
-      <li><strong>SOC 2 Type II</strong> <span class="status-pill status-pending">In flight</span> &mdash; readiness assessment in progress; first audit cycle targeted Q3 2026; first attestation report Q4 2026</li>
+      <li><strong>SOC 2 Type II (own attestation)</strong> <span class="status-pill status-pending">In flight</span> &mdash; readiness assessment in progress; first audit cycle targeted Q3 2026; first attestation report Q4 2026.</li>
+      <li><strong>SOC 2 customer evidence-mapping</strong> <span class="status-pill status-pending">In flight</span> &mdash; the deliverable to your auditor for your own SOC 2 controls; targeted to be available to design partners Q3 2026; targeted to be generally available with the AgenticMem Attest tier.</li>
       <li><strong>HIPAA BAA template</strong> <span class="status-pill status-pending">In flight</span> &mdash; under legal review; available to design partners Q3 2026</li>
       <li><strong>FedRAMP authorization</strong> <span class="status-pill status-future">Charter</span> &mdash; agency sponsor identification in progress; targeted authorization 2027 via FedRAMP 20x</li>
       <li><strong>ITAR registration</strong> <span class="status-pill status-future">Charter</span> &mdash; pursued in parallel with first defense contractor design partner engagement</li>
-      <li><strong>Penetration test report</strong> <span class="status-pill status-pending">In flight</span> &mdash; first independent third-party penetration test scheduled Q3 2026</li>
+      <li><strong>Penetration test report</strong> <span class="status-pill status-pending">In flight</span> &mdash; first independent third-party penetration test scheduled Q3 2026.</li>
+      <li><strong>Insurance program (E&amp;O / cyber)</strong> <span class="status-pill status-pending">In flight</span> &mdash; in procurement. Targeted to be in place prior to commercial launch. Any carrier and limits applicable to a given engagement are matters for the customer agreement applicable to that engagement; not disclosed on this page.</li>
+      <li><strong>24/7 SOC operations</strong> <span class="status-pill status-pending">In flight</span> &mdash; build in progress. Targeted to be stood up alongside AgenticMem Attest launch (Q3 2026). Any response targets applicable to a given engagement are specified in the customer agreement applicable to that engagement.</li>
+      <li><strong>Hardware-attested keys (Ed25519)</strong> <span class="status-pill status-pending">In flight</span> &mdash; v0.7 milestone. Substrate-level Ed25519 attestation ships with ai-memory v0.7, target end Q2 2026.</li>
+      <li><strong>Cleared workforce</strong> <span class="status-pill status-future">Charter</span> &mdash; no AgenticMem personnel hold federal security clearances as of 2026-05; clearance is targeted to be initiated through the sponsoring-agency process at engagement, alongside Sovereign-tier delivery.</li>
     </ul>
     <p>If you need any of the above before we have it, we should not be your vendor yet. Run the OSS in pilot, evaluate other vendors that hold these certifications today, and revisit AgenticMem at our commercial launch.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="/#contact">Inquire about commercial deployment</a>
+      <a class="btn btn-primary" href="/#contact">Pre-launch inquiry &mdash; discovery call</a>
       <a class="btn btn-ghost" href="https://github.com/alphaonedev/ai-memory-mcp">View ai-memory on GitHub</a>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>OSS permanence &mdash; pledge to be published</h2>
+    <p>The Apache 2.0 license on <em>ai-memory</em>&trade; is permanent. The four principles describing the open-source-license posture (no relicense, no paywall on OSS features, no commercial coupling, right to fork) are intended to be published as a dated, owner-signed OSS Permanence Pledge at <a href="https://github.com/alphaonedev/ai-memory-mcp">github.com/alphaonedev/ai-memory-mcp</a> once finalized. Marketing language about future licensing can be unwound by the entity that produced it; a published pledge document at the canonical repository sits at a different evidentiary level. Procurement teams may attach the pledge document, once published, to their vendor file as the open-source-license posture of <em>ai-memory</em>&trade;.</p>
   </div>
 </section>
 
@@ -151,17 +164,21 @@
         <h4>Site</h4>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/different">How we differ</a></li>
+          <li><a href="/positioning">How we position</a></li>
           <li><a href="/trust">Trust ladder</a></li>
           <li><a href="/evidence">Public evidence</a></li>
           <li><a href="/founder">Founder note</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC (Wyoming); USPTO application pending. <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC (Delaware); USPTO application pending. AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
+      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC, a Wyoming limited liability company (USPTO trademark application pending; current serial and status verifiable at <a href="https://tsdr.uspto.gov">tsdr.uspto.gov</a>). <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC, a Delaware limited liability company (USPTO trademark application pending; current serial and status verifiable at <a href="https://tsdr.uspto.gov">tsdr.uspto.gov</a>). AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
       <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. The license is permanent.</p>
+      <p><strong>Forward-looking statements.</strong> This site refers to certifications, authorizations, customer-agreement terms, insurance, SLAs, and product features that are planned but not yet in place &mdash; including SOC 2 Type II, HIPAA Business Associate Agreement scope, FedRAMP authorization, ITAR registration, DoD Impact Levels, CMMC mappings, hardware-attested keys, the AgenticMem 24/7 SOC, and the AgenticMem Attest, Federate, and Sovereign commercial tiers. The Evidence page lists current status of each. This site is informational only. Nothing on this site is a customer agreement, a term of any customer agreement, a representation about a customer agreement, or a promise of any specific delivery date.</p>
       <p>&copy; 2026 AgenticMem LLC. All rights reserved.</p>
+      <p><strong>Not legal advice.</strong> Nothing on this site is legal advice. Engage your own counsel for legal interpretation.</p>
       <p class="privacy-note">No third-party analytics. No trackers. No cookies. Fonts self-hosted; no external requests on page load.</p>
     </div>
   </div>
