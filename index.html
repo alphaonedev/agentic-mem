@@ -84,7 +84,7 @@
       <li><strong>ITAR registration</strong> for export-controlled environments</li>
       <li><strong>CMMC Level 3</strong> mappings for defense contractor supply chain</li>
     </ul>
-    <p>The cheapest of these costs $30,000 and 6 months of dedicated work. The most expensive costs $3,000,000 and 18 months. None of them are produced by a coding agent. They require human auditors, named accountable officers, regulatory relationships, and operational evidence accumulated over time.</p>
+    <p>None of these are produced by a coding agent. They require human auditors, named accountable officers, regulatory relationships, and operational evidence accumulated over time. Their costs vary materially by your environment; we will not anchor without specifics.</p>
 
     <h3>Operations you do not want to run</h3>
     <ul class="spaced">
@@ -181,14 +181,12 @@ docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
       <li>The cost of FedRAMP authorization varies by your sponsoring agency and assessment-readiness. We will not guess at it.</li>
       <li>The cost of a managed federation deployment varies by your node count, region count, and incident response SLA. We will not guess at it.</li>
     </ul>
-    <p>What we will tell you, plainly:</p>
-    <ul class="range-list">
-      <li><span class="tier-name">Engagement floor</span><span class="tier-detail">$50,000 / year. Below that, you should run the OSS. We will tell you that on the discovery call.</span></li>
-      <li><span class="tier-name">Mid-market typical</span><span class="tier-detail">$150,000 &ndash; $400,000 / year per deployment. Includes SOC 2 mapped evidence, HIPAA BAA where applicable, managed federation control plane, 24/7 incident response, dedicated TAM.</span></li>
-      <li><span class="tier-name">Large enterprise / consortium</span><span class="tier-detail">$400,000 &ndash; $2,000,000 / year. Adds cross-organization tribunal infrastructure, multi-region deployment, custom regulatory mappings, named expert-witness retention.</span></li>
-      <li><span class="tier-name">Government / FedRAMP / IL5</span><span class="tier-detail">$1,500,000 &ndash; $5,000,000 / year. ATO sponsorship work, ITAR-registered hosting, cleared support staff, agency-specific evidence packages. Multi-year contracts standard. Procurement cycles 12&ndash;24 months.</span></li>
-    </ul>
-    <p>If you are not sure which tier fits you, schedule a 30-minute discovery call. If we determine the OSS is sufficient for your needs, we will tell you and not engage. We are not motivated to oversell. We are motivated to win the deployments where we are genuinely the right answer.</p>
+    <h3>What we will tell you, plainly</h3>
+    <p>The commercial tiers &mdash; Attest, Federate, Sovereign &mdash; are scoped to operational reality, not to feature lists. Pricing reflects the certifications, operations, liability acceptance, and services your environment requires; it varies materially by your existing security maturity, sponsoring agency, assessment-readiness, node count, region count, and incident response SLA. We will not guess at it before we understand your environment.</p>
+    <p>If your annual budget for AI agent governance infrastructure is below the threshold where SOC 2 mapped evidence, named liability acceptance, and 24/7 operational support are operationally required &mdash; or where you have those capabilities in-house &mdash; the open-source substrate is the correct answer. We will tell you so on the discovery call. We are not motivated to oversell. We are motivated to engage where AgenticMem is genuinely the right answer.</p>
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="#contact">Schedule a 30-minute discovery call</a>
+    </div>
   </div>
 </section>
 
@@ -216,7 +214,7 @@ docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
       <li>ai-memory v0.7 ships end of Q2 2026 with Ed25519 attested identity (the substrate AgenticMem Attest tier requires)</li>
       <li>AgenticMem operations team builds out: SOC 2 readiness, BAA template legal review, HSM provisioning runbooks, federation control plane SaaS</li>
       <li>Three design partner engagements run concurrently from May&ndash;September 2026 with substantially reduced pricing in exchange for case study rights and reference customer status</li>
-      <li>Public commercial availability September 2026, with first-cohort customers paying $50,000&ndash;$200,000 for first-year engagements</li>
+      <li>Public commercial availability September 2026, with first-cohort customers paying first-year engagement rates</li>
     </ul>
     <p>What we will not do during this period:</p>
     <ul class="spaced">
@@ -238,7 +236,7 @@ docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
       <li>Mid-market or enterprise organization in financial services, healthcare, government contracting, or regulated professional services</li>
       <li>AI agents already in production (or in active pilot) touching regulated data</li>
       <li>Internal compliance or legal stakeholder asking the questions on the home page of this site</li>
-      <li>Willingness to engage at $50,000&ndash;$100,000 for first-year engagement (vs $150,000+ post-launch pricing) in exchange for case study rights and reference customer status</li>
+      <li>Substantially reduced first-year engagement rates (vs post-launch pricing) in exchange for case study rights and reference customer status</li>
       <li>Tolerance for a product that is genuinely new and where roadmap influence is real</li>
     </ul>
 
@@ -289,6 +287,9 @@ docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
         <p>Coverage requests, briefings, and capital inquiries.</p>
       </div>
     </div>
+    <div class="structure-note" style="margin-top:2.4em">
+      <p><strong>Updated 2026-05-06.</strong> Pricing ranges previously published on this page have been removed in favor of discovery-call pricing only. Range data may persist in third-party caches; for current pricing, contact <a href="mailto:discovery@agenticmem.co">discovery@agenticmem.co</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -318,11 +319,11 @@ docker pull ghcr.io/alphaonedev/ai-memory:latest</code></pre>
       </div>
     </div>
     <div class="legal">
-      <p><em>AgenticMem</em>&trade; is a trademark of AgenticMem LLC (Wyoming). <em>ai-memory</em>&trade; is a trademark of AlphaOne LLC (Delaware). AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
+      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC (Wyoming); USPTO application pending. <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC (Delaware); USPTO application pending. AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
       <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. The Apache 2.0 license is permanent. We have no plans to relicense, dual-license, or paywall the OSS.</p>
       <p>If we ever break that commitment, you have the right to fork the last Apache-licensed version, the last v1.0 release, and continue without us.</p>
       <p>&copy; 2026 AgenticMem LLC. All rights reserved.</p>
-      <p class="privacy-note">No third-party analytics. No trackers. No cookies set on first load.</p>
+      <p class="privacy-note">No third-party analytics. No trackers. No cookies. Fonts self-hosted; no external requests on page load.</p>
     </div>
   </div>
 </footer>

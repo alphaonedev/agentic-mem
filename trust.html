@@ -46,61 +46,67 @@
   <div class="container wide">
     <ol class="steps">
 
-      <li>
+      <li class="tile-oss">
         <div class="step-head">
           <span class="step-num">Step 1</span>
           <span class="step-title">OSS Local</span>
-          <span class="step-meta">v0.6.3 today &middot; free &middot; Apache 2.0</span>
+          <span class="step-meta">v0.6.3 &middot; free &middot; Apache 2.0</span>
+          <span class="status-pill status-shipped">Shipped</span>
         </div>
         <p class="step-body">Single-machine deployment. SQLite database. Bound to <code>127.0.0.1</code> by default. Zero outbound network calls. Personal-machine baseline.</p>
         <p class="step-use"><strong>Use case:</strong> solo developer, individual researcher, evaluation deployment.</p>
       </li>
 
-      <li>
+      <li class="tile-oss">
         <div class="step-head">
           <span class="step-num">Step 2</span>
           <span class="step-title">OSS Federation</span>
-          <span class="step-meta">v0.6.3 today &middot; free &middot; Apache 2.0</span>
+          <span class="step-meta">v0.6.3 &middot; free &middot; Apache 2.0</span>
+          <span class="status-pill status-shipped">Shipped</span>
         </div>
         <p class="step-body">Multi-machine deployment with W-of-N quorum writes, mTLS client-cert authentication, fingerprint allowlist. No central PKI required. Each node operates independently.</p>
         <p class="step-use"><strong>Use case:</strong> team deployments, multi-region replication, peer-to-peer organization.</p>
       </li>
 
-      <li>
+      <li class="tile-oss">
         <div class="step-head">
           <span class="step-num">Step 3</span>
           <span class="step-title">OSS Attested</span>
           <span class="step-meta">v0.7 end Q2 2026 &middot; free &middot; Apache 2.0</span>
+          <span class="status-pill status-pending">In flight</span>
         </div>
         <p class="step-body">Adds Ed25519 cryptographic attestation. Every memory link write is signed end-to-end. Verifiable provenance from the originating agent through every replication hop.</p>
         <p class="step-use"><strong>Use case:</strong> regulated environments where the OSS substrate is sufficient and your internal compliance team can map the evidence to your frameworks.</p>
       </li>
 
-      <li>
+      <li class="tile-commercial">
         <div class="step-head">
           <span class="step-num">Step 4</span>
           <span class="step-title">AgenticMem Attest</span>
           <span class="step-meta">commercial &middot; Q3 2026 launch</span>
+          <span class="status-pill status-pending">In flight</span>
         </div>
         <p class="step-body">Adds: hardware-backed key storage (TPM, HSM, AWS CloudHSM, Azure Dedicated HSM); SOC 2 Type II mapped evidence; HIPAA Business Associate Agreement; managed key rotation; 24/7 incident response; dedicated TAM.</p>
         <p class="step-use"><strong>Use case:</strong> enterprises in regulated industries (financial services, healthcare, regulated professional services) that need commercial counterparty for compliance and liability acceptance.</p>
       </li>
 
-      <li>
+      <li class="tile-commercial">
         <div class="step-head">
           <span class="step-num">Step 5</span>
           <span class="step-title">AgenticMem Federate</span>
           <span class="step-meta">commercial &middot; Q4 2026 launch</span>
+          <span class="status-pill status-pending">In flight</span>
         </div>
         <p class="step-body">Adds (over Attest): cross-organization federation control plane; multi-region tribunal infrastructure with Byzantine fault tolerance; cross-trust-boundary key management; dedicated security operations center; quarterly third-party penetration testing; incident forensics retainer.</p>
         <p class="step-use"><strong>Use case:</strong> large enterprises, consortia, multi-division deployments, joint ventures.</p>
       </li>
 
-      <li>
+      <li class="tile-commercial">
         <div class="step-head">
           <span class="step-num">Step 6</span>
           <span class="step-title">AgenticMem Sovereign</span>
           <span class="step-meta">commercial &middot; targeted late 2027 (FedRAMP-dependent)</span>
+          <span class="status-pill status-future">Charter</span>
         </div>
         <p class="step-body">Adds (over Federate): FedRAMP Moderate or High authorization sponsorship via FedRAMP 20x pathway; DoD IL4 / IL5 mappings; ITAR registration; air-gap deployment kits; cleared support team; agency-specific evidence packages.</p>
         <p class="step-use"><strong>Use case:</strong> government agencies, defense contractors, intelligence community deployments.</p>
@@ -144,10 +150,10 @@
       </div>
     </div>
     <div class="legal">
-      <p><em>AgenticMem</em>&trade; is a trademark of AgenticMem LLC (Wyoming). <em>ai-memory</em>&trade; is a trademark of AlphaOne LLC (Delaware). AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
-      <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
+      <p><strong>AgenticMem</strong>&trade; is a trademark of AgenticMem LLC (Wyoming); USPTO application pending. <strong>ai-memory</strong>&trade; is a trademark of AlphaOne LLC (Delaware); USPTO application pending. AgenticMem LLC and AlphaOne LLC are separate legal entities owned by the same persons. <em>ai-memory</em> is developed by AlphaOne LLC and made commercially available by AgenticMem LLC.</p>
+      <p><em>ai-memory</em> is open source under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. The license is permanent.</p>
       <p>&copy; 2026 AgenticMem LLC. All rights reserved.</p>
-      <p class="privacy-note">No third-party analytics. No trackers. No cookies set on first load.</p>
+      <p class="privacy-note">No third-party analytics. No trackers. No cookies. Fonts self-hosted; no external requests on page load.</p>
     </div>
   </div>
 </footer>
