@@ -203,8 +203,10 @@ blockquote {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
-  gap: 24px;
+  flex-wrap: wrap;
+  min-height: 68px;
+  padding: 14px 0;
+  gap: 16px 24px;
 }
 .brand {
   display: inline-flex;
@@ -212,6 +214,7 @@ blockquote {
   gap: 10px;
   text-decoration: none;
   color: var(--headings);
+  flex: 0 0 auto;
 }
 .brand:hover { color: var(--headings); text-decoration: none; }
 .brand-mark {
@@ -734,11 +737,12 @@ p.callout strong { color: var(--charcoal); font-weight: 700; }
   font-size: 0.7rem;
   padding: 2px 8px;
   border-radius: 8pt;
-  margin-left: 6pt;
   letter-spacing: 0.4pt;
   text-transform: uppercase;
   font-weight: 700;
   vertical-align: middle;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 /* ============================================================ STATUS PILLS */
@@ -851,9 +855,11 @@ p.callout strong { color: var(--charcoal); font-weight: 700; }
   .section h2 { padding-top: 18px; }
   .section h2::before { width: 40px; }
   .section h2::after { left: 48px; }
+  .status-pill-header { font-size: 0.62rem; padding: 2px 6px; white-space: normal; }
 }
 @media (max-width: 540px) {
-  .nav a:not(.brand):not(.nav-cta) { display: none; }
+  .nav { width: 100%; justify-content: flex-start; }
+  .status-pill-header { order: 3; width: 100%; text-align: left; }
 }
 
 /* ============================================================ PRINT */
