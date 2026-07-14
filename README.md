@@ -1,27 +1,12 @@
-<!--
-  Marketing surface style rules — do not delete.
-  No acceptance, future-contract, or commitment language on any page.
-  See full table at: docs/STYLE-NO-ACCEPTANCE.md
--->
-
 # agenticmem.co
 
-Marketing site for **AgenticMem** — the commercially supported distribution of
-[ai-memory](https://github.com/alphaonedev/ai-memory-mcp) by AlphaOne LLC.
+Stealth placeholder for **AgenticMem** (AlphaOne LLC).
 
-## Stack
-- Pure static HTML + CSS, no build step.
-- Deployed via **Cloudflare Pages** (auto-deploy on push to `main`).
-- Custom domain: <https://agenticmem.co>
+Static HTML only. Deployed via Cloudflare Pages on push to `main`.
 
 ## Local preview
+
 ```bash
 python3 -m http.server 8080
 # open http://localhost:8080
 ```
-
-## Deploy
-Push to `main`. Cloudflare Pages picks it up automatically.
-
----
-© AlphaOne LLC. *ai-memory* is a trademark of AlphaOne LLC.
