@@ -1,347 +1,569 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<title>AgenticMem — Governable Agent Memory</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AgenticMem</title>
-<meta name="description" content="AgenticMem is the trusted memory layer for the agentic enterprise — the commercially-supported foundation built on the open-source ai-memory substrate.">
-<meta property="og:title" content="AgenticMem">
-<meta property="og:description" content="AI agents are genius amnesiacs. We give them memory.">
-<meta property="og:url" content="https://www.agenticmem.co">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#f4f0e8">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="AgenticMem is the commercial support vehicle for ai-memory — certified, governable, health-monitored agent memory for organizations that cannot run it in an unmanaged store.">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#f4f0e8; --panel:#fcf9f3; --panel-2:#ebe4d6; --raise:#f8f4ec;
+  --bg:#f4f0e8; --bg2:#ebe4d6; --panel:#fcf9f3; --raise:#f8f4ec;
   --ink:#1a1712; --ink-soft:#7a7161; --ink-mid:#544b3d; --line:#ddd4c2; --line-soft:#e9e2d4;
-  --accent:#b07d10; --accent-2:#8a6314; --accent-soft:#f2e8cf; --accent-ink:#6e4f0f;
-  --deep:#1c5245; --deep-soft:#dfeae3; --good:#2f7d5b; --hair:rgba(26,23,18,.08);
-  --disp:'Bricolage Grotesque',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --accent:#b07d10; --accent-deep:#8a6314; --accent-soft:#f2e8cf; --accent-ink:#6e4f0f;
+  --teal:#1c5245; --teal-soft:#dfeae3; --teal-ink:#134034; --gold:#8a6d1a; --on-accent:#211a0a;
+  --good:#2f7d5b;
+  /* health semantic accents — used as accents only; chrome stays amber/parchment */
+  --vital:#2f7d5b; --vital-soft:#dbeee5; --vital-ink:#1f6547;
+  --degraded:#a9741a; --degraded-soft:#f4ebd4;
+  --critical:#c5344c; --critical-soft:#f7dee3;
+  --glow:rgba(47,125,91,.14);
+  --disp:'Archivo',system-ui,sans-serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0c0b08; --panel:#15130e; --panel-2:#1e1b13; --raise:#191610;
+  --bg:#0c0b08; --bg2:#120f0a; --panel:#15130e; --raise:#191610;
   --ink:#f3eee3; --ink-soft:#988f7f; --ink-mid:#bdb2a0; --line:#2a2619; --line-soft:#1f1c13;
-  --accent:#e3ad33; --accent-2:#f2c968; --accent-soft:#241c0c; --accent-ink:#f2c968;
-  --deep:#48897579; --deep:#3d7565; --deep-soft:#12251f; --good:#4cba86; --hair:rgba(243,238,227,.08);
+  --accent:#e3ad33; --accent-deep:#caa02a; --accent-soft:#241c0c; --accent-ink:#f2c968;
+  --teal:#3d7565; --teal-soft:#12251f; --teal-ink:#8fd0bd; --gold:#c9a84e; --on-accent:#1a1207; --good:#4cba86;
+  --vital:#4cba86; --vital-soft:#12251f; --vital-ink:#7ceab9;
+  --degraded:#e3a838; --degraded-soft:#241c0c;
+  --critical:#f0607d; --critical-soft:#2c1017;
+  --glow:rgba(76,186,134,.16);
 }}
 :root[data-theme="dark"]{
-  --bg:#0c0b08; --panel:#15130e; --panel-2:#1e1b13; --raise:#191610;
+  --bg:#0c0b08; --bg2:#120f0a; --panel:#15130e; --raise:#191610;
   --ink:#f3eee3; --ink-soft:#988f7f; --ink-mid:#bdb2a0; --line:#2a2619; --line-soft:#1f1c13;
-  --accent:#e3ad33; --accent-2:#f2c968; --accent-soft:#241c0c; --accent-ink:#f2c968;
-  --deep:#3d7565; --deep-soft:#12251f; --good:#4cba86; --hair:rgba(243,238,227,.08);
+  --accent:#e3ad33; --accent-deep:#caa02a; --accent-soft:#241c0c; --accent-ink:#f2c968;
+  --teal:#3d7565; --teal-soft:#12251f; --teal-ink:#8fd0bd; --gold:#c9a84e; --on-accent:#1a1207; --good:#4cba86;
+  --vital:#4cba86; --vital-soft:#12251f; --vital-ink:#7ceab9;
+  --degraded:#e3a838; --degraded-soft:#241c0c;
+  --critical:#f0607d; --critical-soft:#2c1017;
+  --glow:rgba(76,186,134,.16);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4{font-family:var(--disp);margin:0;line-height:1.04;font-weight:700;letter-spacing:-.02em}
 a{color:var(--accent-ink);text-decoration:none}
+a:focus-visible,button:focus-visible,.rlink:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--disp);margin:0;line-height:1.08;font-weight:800;letter-spacing:-.025em}
 .mono{font-family:var(--mono)}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
 
-/* top bar */
-.topbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:22px 0 0}
-.mark{display:flex;align-items:center;gap:11px}
-.mark .glyph{width:26px;height:26px;flex:none;position:relative}
-.mark .glyph svg{width:100%;height:100%;display:block}
-.mark .wm{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.02em}
-.mark .wm .b{color:var(--accent)}
-.stealth{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);border-radius:30px;padding:6px 13px;background:var(--panel)}
-.stealth .d{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;max-width:1120px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand .mk{width:22px;height:22px;flex:none}
+.brand .am{color:var(--ink-soft);font-weight:600;font-size:12.5px;font-family:var(--mono)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--ink-mid);font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-family:var(--sans);font-size:13.5px;font-weight:700;color:var(--on-accent);background:var(--accent);border:0;border-radius:8px;padding:9px 15px;cursor:pointer}
+.nav-cta:hover{filter:brightness(1.07)}
+@media(max-width:900px){.nav-links{display:none}}
 
 /* hero */
-.hero{padding:66px 0 58px;border-bottom:1px solid var(--line);position:relative}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.5}
-.kick{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:24px}
-h1.hh{font-size:clamp(40px,7.6vw,90px);font-weight:800;letter-spacing:-.035em;line-height:.96;text-wrap:balance}
-h1.hh .fade{color:var(--ink-soft)}
-h1.hh .amber{color:var(--accent)}
-.hsub{margin:28px 0 0;font-size:clamp(17px,2.2vw,22px);color:var(--ink-mid);max-width:60ch;line-height:1.5;font-weight:400}
-.hsub b{color:var(--ink);font-weight:600}
-.hmeta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-.chip{font-family:var(--mono);font-size:12px;color:var(--ink-mid);border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:8px 13px}
-.chip b{color:var(--accent);font-weight:600}
+.hero{padding:82px 0 62px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at 82% 0,var(--accent-soft),transparent 60%);opacity:.7;pointer-events:none}
+.hero-in{position:relative}
+.pill-top{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--ink-mid);border:1px solid var(--line);background:var(--panel);border-radius:30px;padding:6px 14px;margin-bottom:26px}
+.pill-top .d{width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 22%,transparent)}
+h1.hero-h{font-size:clamp(37px,6.4vw,72px);font-weight:900;letter-spacing:-.035em;line-height:1;text-wrap:balance}
+h1.hero-h .a{color:var(--accent)}
+.hero-sub{font-size:clamp(17px,2.2vw,22px);color:var(--ink-mid);max-width:62ch;margin:26px 0 0;line-height:1.5}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--sans);font-size:15px;font-weight:600;border-radius:10px;padding:13px 22px;cursor:pointer;border:1px solid transparent;transition:.15s;display:inline-block}
+.btn.primary{background:var(--accent);color:var(--on-accent);font-weight:700}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent-ink)}
+.proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+.proof span{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+.proof span b{color:var(--ink);font-weight:600}
 
 /* sections */
-section{padding:62px 0;border-bottom:1px solid var(--line)}
-.lead{max-width:74ch}
-.sec-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
-h2.st{font-size:clamp(28px,4.2vw,46px);font-weight:700;letter-spacing:-.025em;text-wrap:balance;line-height:1.02}
-.sk{font-size:16.5px;color:var(--ink-mid);margin-top:16px;max-width:66ch;line-height:1.6}
-.sk b{color:var(--ink);font-weight:600}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+.sec-h{max-width:72ch;margin-bottom:36px}
+.sec-h h2{font-size:clamp(27px,3.8vw,42px);font-weight:800;letter-spacing:-.025em;text-wrap:balance;line-height:1.05}
+.sec-h h2 .a{color:var(--accent)}
+.sec-h p{font-size:16.5px;color:var(--ink-mid);margin-top:16px;line-height:1.6}
+.sec-h p b{color:var(--ink);font-weight:600}
 
-/* thesis big statement */
-.thesis{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.6vw,38px);line-height:1.24;letter-spacing:-.02em;text-wrap:balance;max-width:24ch}
-.thesis .em{color:var(--accent)}
-.thesiswrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
-@media(max-width:800px){.thesiswrap{grid-template-columns:1fr;gap:22px}}
-.thesiswrap .aside{font-size:15px;color:var(--ink-mid);line-height:1.7}
-.thesiswrap .aside b{color:var(--ink);font-weight:600}
-.thesiswrap .aside p{margin:0 0 14px}
+/* pull quote */
+.pull{margin:30px 0 6px;padding:26px 30px;border-left:3px solid var(--accent);background:linear-gradient(120deg,var(--accent-soft),transparent 78%);border-radius:0 14px 14px 0}
+.pull p{margin:0;font-family:var(--disp);font-weight:800;font-size:clamp(21px,3vw,30px);letter-spacing:-.02em;line-height:1.18;color:var(--ink);text-wrap:balance}
+.pull .who{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:12px;letter-spacing:.04em}
 
-/* open core split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
-@media(max-width:760px){.split{grid-template-columns:1fr}}
-.oc{border:1px solid var(--line);border-radius:18px;padding:26px 26px;background:var(--panel);position:relative;overflow:hidden}
-.oc.free{border-color:color-mix(in srgb,var(--deep) 40%,var(--line))}
-.oc.comm{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:linear-gradient(160deg,var(--accent-soft),var(--panel) 60%)}
-.oc .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:14px}
-.oc.free .tag{color:var(--deep);background:var(--deep-soft)}
-.oc.comm .tag{color:var(--accent-ink);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
-.oc h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
-.oc h3 .u{color:var(--ink-soft);font-weight:500;font-size:14px;font-family:var(--mono);display:block;margin-top:4px;letter-spacing:0}
-.oc p.d{font-size:14.5px;color:var(--ink-mid);margin:12px 0 16px;line-height:1.55}
-.oc ul{margin:0;padding:0;list-style:none}
-.oc li{font-size:13.5px;color:var(--ink-mid);padding:7px 0 7px 24px;position:relative;border-top:1px solid var(--line-soft);line-height:1.5}
-.oc li:first-child{border-top:none}
-.oc li b{color:var(--ink);font-weight:600}
-.oc.free li::before{content:"◇";position:absolute;left:2px;color:var(--deep)}
-.oc.comm li::before{content:"◆";position:absolute;left:2px;color:var(--accent)}
+/* feature grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s}
+.feat:hover{border-color:var(--accent);box-shadow:0 12px 30px -18px var(--accent)}
+.feat .fn{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+.feat h3{font-size:18px;font-weight:700;margin:10px 0 7px;letter-spacing:-.01em}
+.feat p{margin:0;font-size:13.5px;color:var(--ink-mid);line-height:1.55}
+.feat p b{color:var(--ink);font-weight:600}
 
-/* offerings */
-.offers{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:8px}
-.offer{border:1px solid var(--line);border-radius:16px;padding:22px 22px;background:var(--panel);transition:.25s}
-.offer:hover{border-color:var(--accent);transform:translateY(-2px)}
-.offer .no{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
-.offer h4{font-size:18px;font-weight:700;margin:9px 0 8px;letter-spacing:-.01em}
-.offer p{margin:0;font-size:13.5px;color:var(--ink-mid);line-height:1.55}
-.offer b{color:var(--ink);font-weight:600}
+/* two columns */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
+.col.tealed{border-color:color-mix(in srgb,var(--teal) 40%,var(--line))}
+.col .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:11px}
+.col.tealed .lbl{color:var(--teal-ink)}
+.col h3{font-size:21px;font-weight:800;letter-spacing:-.015em}
+.col ul{margin:14px 0 0;padding:0;list-style:none}
+.col li{font-size:14px;color:var(--ink-mid);padding:8px 0 8px 22px;position:relative;border-top:1px solid var(--line-soft);line-height:1.5}
+.col li:first-child{border-top:none}
+.col li::before{content:"\203A";position:absolute;left:3px;color:var(--accent);font-weight:700}
+.col.tealed li::before{color:var(--teal-ink)}
+.col li b{color:var(--ink);font-weight:600}
 
-/* moat */
-.moat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:8px}
-.mcell{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel)}
-.mcell .mi{font-size:17px;color:var(--accent)}
-.mcell h4{font-size:16px;font-weight:700;margin:8px 0 6px;letter-spacing:-.01em}
-.mcell p{margin:0;font-size:13px;color:var(--ink-mid);line-height:1.5}
+/* problem callout */
+.problem{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+@media(max-width:820px){.problem{grid-template-columns:1fr;gap:22px}}
+.problem .big{font-family:var(--disp);font-weight:800;font-size:clamp(24px,3.6vw,40px);letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+.problem .big .a{color:var(--accent)}
+.problem .aside{font-size:15.5px;color:var(--ink-mid);line-height:1.7}
+.problem .aside b{color:var(--ink);font-weight:600}
+.problem .aside p{margin:0 0 12px}
+.problem .aside p:last-child{margin:0}
 
-/* roadmap */
-.road{margin-top:12px;position:relative}
-.phase{display:grid;grid-template-columns:150px 1fr;gap:36px;padding:22px 0;border-top:1px solid var(--line-soft);position:relative}
-.phase:first-child{border-top:none}
-.phase .when{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--accent);padding-top:5px;position:relative}
-.phase .when .lab{display:block;font-size:10.5px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-weight:500}
-.phase .when::after{content:"";position:absolute;right:-24px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:2px solid var(--accent);z-index:2;box-sizing:border-box}
-.phase.hot .when::after{background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
-.road::before{content:"";position:absolute;left:167px;top:26px;bottom:26px;width:2px;background:linear-gradient(var(--accent),var(--deep));opacity:.35}
-.phase .body h4{font-size:19px;font-weight:700;letter-spacing:-.015em;margin-bottom:5px}
-.phase .body p{margin:0;font-size:14px;color:var(--ink-mid);line-height:1.55}
-.phase.hot .body h4{color:var(--accent-ink)}
-.phase .body .badge{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--accent-ink);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:6px;padding:2px 8px;margin-top:9px;letter-spacing:.03em}
+/* three legs (encryption) */
+.legs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
+@media(max-width:720px){.legs{grid-template-columns:1fr}}
+.leg{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+.leg .ln{font-family:var(--mono);font-size:11px;color:var(--teal-ink);font-weight:600;letter-spacing:.05em}
+.leg h4{font-size:15px;font-weight:700;margin:9px 0 5px;letter-spacing:-.01em}
+.leg p{margin:0;font-size:12.5px;color:var(--ink-mid);line-height:1.45}
+.leg .lock{position:absolute;top:15px;right:16px;font-size:13px}
 
-/* mission close */
-.mission{padding:84px 0 90px;text-align:center;border-bottom:none}
-.mission h2{font-family:var(--disp);font-size:clamp(30px,5.4vw,58px);font-weight:800;letter-spacing:-.03em;text-wrap:balance;max-width:20ch;margin:0 auto 20px;line-height:1.02}
-.mission h2 .amber{color:var(--accent)}
-.mission p{max-width:58ch;margin:0 auto;color:var(--ink-mid);font-size:16.5px}
-.pillrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
-.pillrow span{font-family:var(--mono);font-size:12px;color:var(--ink-mid);border:1px solid var(--line);border-radius:30px;padding:7px 15px;background:var(--panel)}
-.pillrow span b{color:var(--accent);font-weight:600}
+/* dual CTA cards (evidence) */
+.evi{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media(max-width:720px){.evi{grid-template-columns:1fr}}
+.evi a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px;transition:.18s}
+.evi a:hover{border-color:var(--accent);background:var(--raise);transform:translateY(-2px)}
+.evi .lb{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.evi h4{font-size:20px;font-weight:800;margin:9px 0 6px;letter-spacing:-.015em}
+.evi p{margin:0;font-size:13.5px;color:var(--ink-mid);line-height:1.5}
+.evi .go{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--accent-ink);font-weight:600}
 
-.foot{padding:28px 0 64px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;color:var(--ink-soft);font-size:12px;font-family:var(--mono);letter-spacing:.03em}
-.foot .u{color:var(--accent)}
-.themetog{position:fixed;right:16px;bottom:16px;font-family:var(--mono);font-size:12px;background:var(--panel);border:1px solid var(--line);color:var(--ink-mid);padding:8px 12px;border-radius:10px;cursor:pointer;z-index:30;box-shadow:0 8px 22px -10px rgba(0,0,0,.35)}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:720px){.pillars{grid-template-columns:1fr 1fr}}
+.pil{border:1px solid var(--line);border-radius:16px;padding:22px 18px;background:var(--panel)}
+.pil .g{font-size:20px;color:var(--accent)}
+.pil h4{font-size:17px;font-weight:800;margin:11px 0 5px;letter-spacing:-.01em}
+.pil p{margin:0;font-size:12.5px;color:var(--ink-soft);line-height:1.45}
+
+/* ===== HEALTH MONITORING (re-themed amber; health colors as accents) ===== */
+.heart{width:9px;height:9px;border-radius:50%;background:var(--vital);box-shadow:0 0 0 0 var(--vital);animation:pulse 1.9s ease-out infinite;display:inline-block;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--vital) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.ekg{width:100%;height:64px;margin:10px 0 26px;display:block;overflow:visible}
+.ekg path{fill:none;stroke:var(--vital);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px var(--glow))}
+.ekg .trace{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hbadge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--vital-ink);border:1px solid color-mix(in srgb,var(--vital) 38%,var(--line));background:var(--vital-soft);border-radius:30px;padding:6px 13px;margin-bottom:18px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+@media(max-width:780px){.split{grid-template-columns:1fr}}
+.iface{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--panel);position:relative;overflow:hidden}
+.iface.human{border-color:color-mix(in srgb,var(--vital) 40%,var(--line))}
+.iface.agent{border-color:color-mix(in srgb,var(--teal) 42%,var(--line))}
+.iface .badge{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:7px;margin-bottom:14px}
+.iface.human .badge{color:var(--vital-ink);background:var(--vital-soft)}
+.iface.agent .badge{color:var(--teal-ink);background:var(--teal-soft)}
+.iface h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.iface .who{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin:5px 0 14px}
+.iface p{font-size:14px;color:var(--ink-mid);margin:0 0 14px;line-height:1.55}
+.iface ul{margin:0;padding:0;list-style:none}
+.iface li{font-size:13.5px;color:var(--ink-mid);padding:7px 0 7px 22px;position:relative;border-top:1px solid var(--line-soft);line-height:1.5}
+.iface li:first-child{border-top:none}
+.iface li b{color:var(--ink);font-weight:600}
+.iface.human li::before{content:"\25B8";position:absolute;left:2px;color:var(--vital)}
+.iface.agent li::before{content:"\25B8";position:absolute;left:2px;color:var(--teal-ink)}
+.mockbar{display:flex;gap:5px;margin-bottom:14px}
+.mockbar span{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.tlspill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-ink);background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);border-radius:6px;padding:3px 9px;margin-left:6px}
+.codeblk{font-family:var(--mono);font-size:12px;background:var(--raise);border:1px solid var(--line-soft);border-radius:10px;padding:13px 14px;margin-top:14px;color:var(--ink-mid);overflow-x:auto;line-height:1.6}
+.codeblk .k{color:var(--teal-ink)} .codeblk .s{color:var(--vital-ink)} .codeblk .c{color:var(--ink-soft)}
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+@media(max-width:820px){.loop{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.loop{grid-template-columns:1fr}}
+.lstep{padding:22px 20px;border-right:1px solid var(--line-soft);position:relative}
+.lstep:last-child{border-right:none}
+.lstep .ln{font-family:var(--mono);font-size:11px;color:var(--vital-ink);font-weight:600;letter-spacing:.06em}
+.lstep h4{font-size:17px;font-weight:800;margin:9px 0 6px;letter-spacing:-.01em}
+.lstep p{margin:0;font-size:13px;color:var(--ink-mid);line-height:1.5}
+.lstep .arr{position:absolute;right:-8px;top:26px;color:var(--vital);font-size:15px;background:var(--panel);z-index:2;width:16px;text-align:center}
+@media(max-width:820px){.lstep .arr{display:none}}
+.loopnote{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-align:center;line-height:1.6}
+.vitals{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:24px}
+.vital{border:1px solid var(--line);border-radius:14px;padding:17px 18px;background:var(--panel);position:relative}
+.vital .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.vital .pill{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:20px;text-transform:uppercase}
+.pill.ok{color:var(--vital-ink);background:var(--vital-soft)}
+.pill.watch{color:var(--degraded);background:var(--degraded-soft)}
+.vital .gl{font-size:15px;color:var(--accent)}
+.vital h4{font-size:15px;font-weight:700;font-family:var(--sans);letter-spacing:-.01em;margin-bottom:5px}
+.vital p{margin:0;font-size:12.5px;color:var(--ink-mid);line-height:1.45}
+.vital .spark{display:flex;align-items:flex-end;gap:2px;height:20px;margin-top:11px}
+.vital .spark i{flex:1;background:var(--vital);opacity:.5;border-radius:1px}
+.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+@media(max-width:700px){.scale{grid-template-columns:1fr}}
+.tier{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel)}
+.tier .t{font-family:var(--mono);font-size:11px;color:var(--vital-ink);font-weight:600;letter-spacing:.05em}
+.tier h4{font-size:19px;font-weight:800;margin:7px 0 7px;letter-spacing:-.02em}
+.tier p{margin:0;font-size:13.5px;color:var(--ink-mid);line-height:1.5}
+
+/* company band */
+.company{text-align:center;background:linear-gradient(160deg,var(--accent-soft),var(--bg2));border-radius:22px;padding:52px 28px;border:1px solid var(--line)}
+.company h2{font-size:clamp(32px,5.4vw,54px);font-weight:900;letter-spacing:-.03em}
+.company h2 .a{color:var(--accent)}
+.company p{max-width:60ch;margin:16px auto 0;color:var(--ink-mid);font-size:16.5px}
+.company .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.company .row span{font-family:var(--mono);font-size:12.5px;color:var(--ink-mid);border:1px solid var(--line);background:var(--panel);border-radius:30px;padding:8px 15px}
+.company .row span b{color:var(--accent-ink);font-weight:600}
+
+/* resources */
+.res{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:720px){.res{grid-template-columns:1fr}}
+.rlink{display:flex;align-items:center;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);transition:.18s}
+.rlink:hover{border-color:var(--accent);background:var(--raise);transform:translateY(-1px)}
+.rlink .rl{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;width:118px;flex:none}
+.rlink .rt{font-size:13.5px;color:var(--ink-mid);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rlink .rt b{color:var(--ink);font-weight:600}
+.rlink .arw{margin-left:auto;color:var(--ink-soft)}
+
+/* footer cta */
+.foot{padding:66px 0 44px;text-align:center}
+.foot h2{font-size:clamp(26px,4.4vw,44px);font-weight:900;letter-spacing:-.03em;text-wrap:balance;max-width:22ch;margin:0 auto 24px}
+.foot h2 .a{color:var(--accent)}
+.foot .fcta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.footbar{padding:22px 0 56px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--ink-soft);font-size:12.5px;font-family:var(--mono)}
+.footbar a{color:var(--accent-ink)}
+
+/* legal */
+.legal{background:var(--bg2);border-top:1px solid var(--line);padding:44px 0 34px}
+.legal .lh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:24px}
+.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 34px}
+@media(max-width:820px){.legal-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.legal-grid{grid-template-columns:1fr}}
+.legal-col h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;margin:0 0 7px}
+.legal-col p{margin:0;font-size:11px;color:var(--ink-soft);line-height:1.58}
+.legal-foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)}
+.legal-foot b{color:var(--ink-mid);font-weight:600}
+
+.note{font-size:12.5px;color:var(--ink-soft);margin-top:16px;font-family:var(--mono);line-height:1.65}
+.note b{color:var(--ink-mid)}
+.note a{color:var(--accent-ink)}
+.themetog{position:fixed;right:16px;bottom:16px;font-family:var(--mono);font-size:12px;background:var(--panel);border:1px solid var(--line);color:var(--ink-mid);padding:8px 12px;border-radius:10px;cursor:pointer;z-index:60;box-shadow:0 8px 22px -10px rgba(0,0,0,.3)}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ekg .trace{animation:none;stroke-dashoffset:0}.heart{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="topbar">
-    <div class="mark">
-      <span class="glyph"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 9 V23 L16 30 L4 23 V9 Z" stroke="var(--accent)" stroke-width="1.6"></path><circle cx="16" cy="16" r="3.4" fill="var(--accent)"></circle><path d="M16 12.6 V6 M16 19.4 V26 M19 16 H26 M13 16 H6" stroke="var(--accent)" stroke-width="1.3"></path><circle cx="16" cy="6" r="1.5" fill="var(--accent)"></circle><circle cx="16" cy="26" r="1.5" fill="var(--accent)"></circle><circle cx="26" cy="16" r="1.5" fill="var(--accent)"></circle><circle cx="6" cy="16" r="1.5" fill="var(--accent)"></circle></svg></span>
-      <span class="wm">Agentic<span class="b">Mem</span></span>
-    </div>
-    <span class="stealth"><span class="d"></span> Stealth · Confidential</span>
-  </div>
-</div>
 
-<div class="hero"><div class="wrap">
-  <div class="kick">Company vision · agenticmem.co</div>
-  <h1 class="hh"><span class="fade">AI agents are</span><br>genius amnesiacs.<br><span class="amber">We give them memory.</span></h1>
-  <p class="hsub">AgenticMem is the <b>trusted memory layer for the agentic enterprise</b> — the commercially-supported foundation built on the open-source <b>ai-memory</b> substrate. Reliable enough for a Fortune&nbsp;500 or a government to stake mission-critical work on. Open enough to become the standard.</p>
-  <div class="hmeta">
-    <span class="chip">Open core · <b>Apache 2.0</b> substrate</span>
-    <span class="chip">Commercial GA · <b>Q4 2026 → Q1 2027</b></span>
-    <span class="chip"><b>agenticmem.co</b></span>
+<div class="nav"><div class="nav-in">
+  <div class="brand">
+    <svg class="mk" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l9 5.2v9.6L12 22 3 16.8V7.2z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.4" fill="var(--accent)"/><path d="M12 9.6V4.5M12 14.4v5.1M14.4 12h5M4.9 12h5" stroke="var(--accent)" stroke-width="1.1"/></svg>
+    AgenticMem™ <span class="am">for ai-memory™</span>
+  </div>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#engineering">Engineering</a>
+    <a href="#health">Health &amp; self-healing</a>
+    <a href="#problem">What it solves</a>
+    <a href="#offering">What we provide</a>
+    <a href="#proof">Proof</a>
+  </nav>
+  <a class="nav-cta" href="https://test.agenticmem.co/" target="_blank" rel="noopener">Live campaign →</a>
+</div></div>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap hero-in">
+  <div class="pill-top"><span class="d"></span> Commercial support for ai-memory · open core, Apache-2.0</div>
+  <h1 class="hero-h">Governable agent memory <span class="a">for the work you can't run unmanaged.</span></h1>
+  <p class="hero-sub"><b>AgenticMem</b> is the commercial support vehicle for <b>ai-memory</b> — the open-source endpoint memory substrate for AI agents. It is for organizations that <b>cannot place agent memory in an unmanaged store</b>: certified configurations, policy-enforced deployments, continuous AI health monitoring and self-healing, and a <b>counterparty</b> that stands behind it.</p>
+  <div class="hero-cta">
+    <a class="btn primary" href="https://test.agenticmem.co/" target="_blank" rel="noopener">See the live acceptance campaign →</a>
+    <a class="btn ghost" href="#engineering">How it's engineered</a>
+  </div>
+  <div class="proof">
+    <span>Certified data tier · <b>PostgreSQL + Apache AGE + pgvector</b></span>
+    <span>Encryption in transit · <b>three legs</b></span>
+    <span>Public telemetry · <b>a green cell is a measurement</b></span>
+    <span>Open core · <b>Apache-2.0</b></span>
   </div>
 </div></div>
 
-<div class="wrap">
+<!-- ENGINEERING — the secret sauce, foregrounded -->
+<section id="engineering"><div class="wrap reveal">
+  <div class="sec-h">
+    <div class="eyebrow">The secret sauce</div>
+    <h2>The product is <span class="a">the engineering and the testing.</span></h2>
+    <p>ai-memory is not asserted to be correct — it is <b>adversarially engineered and verified to the molecular and atomic level as a release condition</b>. Every gate is exercised against a live adversary before it ships, and the results are published, not summarized. When AgenticMem stands behind a deployment, this is what it is standing on.</p>
+  </div>
 
-<!-- WHY NOW -->
-<section>
-  <div class="thesiswrap reveal in">
-    <p class="thesis">Compute and models are commoditizing. <span class="em">Memory is the layer that isn't solved — and can't be faked.</span></p>
+  <div class="pull">
+    <p>A green cell is a measurement, not a claim.</p>
+    <div class="who">// the operating principle of the acceptance campaign</div>
+  </div>
+
+  <div class="grid" style="margin-top:28px">
+    <div class="feat"><div class="fn">01 · CERTIFIED DATA TIER</div><h3>PostgreSQL + AGE + pgvector</h3><p>The certified enterprise-federation tier is a defined, machine-verified data stack — <b>PostgreSQL with Apache AGE and pgvector</b> — not a "bring your own database" gamble.</p></div>
+    <div class="feat"><div class="fn">02 · CONFIDENTIALITY</div><h3>Encrypted in transit, three legs</h3><p>Client↔node, node↔node, and node↔data-tier are each <b>encrypted in transit</b>. Encryption in transit is always on; posture-gated controls layer on top.</p></div>
+    <div class="feat"><div class="fn">03 · SEPARATION OF POWERS</div><h3>Admission, not assertion</h3><p>The agent that writes code never reviews or merges it, and a change is admitted only after an <b>adversarial, separation-of-powers review</b> — self-approval is made structurally impossible.</p></div>
+    <div class="feat"><div class="fn">04 · RED-TEAM</div><h3>Attacked before it ships</h3><p>Forgery, denial-bypass, cross-tenant reads, and memory poisoning are <b>actively attacked</b> as release gates — the failure modes are convicted in the lab, not discovered in production.</p></div>
+    <div class="feat"><div class="fn">05 · KILL-AND-RECOVER</div><h3>Kill it, prove it recovers</h3><p>Nodes are killed mid-flight and the substrate must <b>recover in place with no lost or corrupted data</b>. Recoverability is proven under fault, never assumed.</p></div>
+    <div class="feat"><div class="fn">06 · PUBLIC TELEMETRY</div><h3>Measured in the open</h3><p>The acceptance campaign runs continuously and <b>publishes its results live</b>. Every cell is a real measurement against the shipping code — anyone can watch it turn green.</p></div>
+  </div>
+
+  <div class="eyebrow" style="margin:34px 0 13px">Encrypted in transit · three legs</div>
+  <div class="legs">
+    <div class="leg"><span class="lock">🔒</span><div class="ln">LEG 1</div><h4>Client ↔ ai-memory</h4><p>Every API and MCP client connects over HTTPS / TLS.</p></div>
+    <div class="leg"><span class="lock">🔒</span><div class="ln">LEG 2</div><h4>Node ↔ Node</h4><p>Federated peers communicate over mutual TLS (mTLS).</p></div>
+    <div class="leg"><span class="lock">🔒</span><div class="ln">LEG 3</div><h4>ai-memory ↔ data tier</h4><p>Encrypted link to the PostgreSQL data tier.</p></div>
+  </div>
+
+  <div class="evi">
+    <a href="https://test.agenticmem.co/" target="_blank" rel="noopener">
+      <div class="lb">Live · continuously running</div>
+      <h4>The acceptance campaign</h4>
+      <p>The public verification board — separation-of-powers admission, red-team, kill-and-recover, and data-tier certification, measured against the shipping code in real time.</p>
+      <div class="go">test.agenticmem.co ↗</div>
+    </a>
+    <a href="https://alphaonedev.github.io/ai-memory-mcp/engineering/how-ai-memory-is-built.html" target="_blank" rel="noopener">
+      <div class="lb">Methodology · read the how</div>
+      <h4>How ai-memory is built</h4>
+      <p>The full engineering system: a written Rust standard cited by rule number, code-graph ground truth, adversarial review, verify-at-tip, and live AI-agent testing on real infrastructure.</p>
+      <div class="go">Engineering methodology ↗</div>
+    </a>
+  </div>
+</div></section>
+
+<!-- HEALTH MONITORING & SELF-HEALING -->
+<section id="health" class="alt"><div class="wrap reveal">
+  <div class="hbadge"><span class="heart"></span> AgenticMem AI Health Monitoring &amp; Self-Healing</div>
+  <div class="sec-h" style="margin-bottom:0">
+    <div class="eyebrow">Manageability at scale</div>
+    <h2>Full-spectrum health monitoring <span class="a">&amp; self-healing</span> for the substrate.</h2>
+    <p>If the memory substrate is mission-critical, its health cannot be a guess. AgenticMem watches <b>every facet</b> of an ai-memory deployment — every write path, every backend, every federation link, every attestation — from a single node to a cluster, swarm, or hive, and where it safely can, it <b>heals itself</b>. Purpose-built for a world where the operators are increasingly <b>AI agents themselves</b>.</p>
+  </div>
+  <svg class="ekg" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path class="trace" d="M0,35 L260,35 L285,35 L300,12 L318,58 L336,35 L520,35 L545,35 L560,20 L575,50 L590,35 L820,35 L845,35 L860,10 L878,60 L896,35 L1080,35 L1200,35"/></svg>
+
+  <div class="eyebrow" style="margin-bottom:4px">Two operator surfaces</div>
+  <div class="split">
+    <div class="iface human">
+      <span class="badge"><span class="heart" style="width:6px;height:6px"></span> Human operators</span>
+      <div class="mockbar"><span></span><span></span><span></span></div>
+      <h3>HTML health console</h3>
+      <div class="who">// biologic human operators</div>
+      <p>A live web dashboard that communicates ai-memory infrastructure health at a glance — status, vitals, alerts, and the self-healing actions the system has taken.</p>
+      <ul>
+        <li><b>At-a-glance status</b> across nodes, backends &amp; federation links</li>
+        <li><b>Vitals &amp; trends</b> — latency, throughput, write-plane liveness</li>
+        <li><b>Alerts &amp; incident timeline</b> with severity and blast radius</li>
+        <li><b>Self-healing audit</b> — what was detected, and what it fixed</li>
+      </ul>
+    </div>
+    <div class="iface agent">
+      <span class="badge">◆ AI-agent operators</span>
+      <div class="mockbar"><span></span><span></span><span></span></div>
+      <h3>Monitoring API <span class="tlspill">🔒 TLS</span></h3>
+      <div class="who">// AI agents running the health-monitoring mission</div>
+      <p>A programmatic, TLS-encrypted API for the AI agents tasked with monitoring and managing ai-memory — machine-readable health, and the levers to act on it.</p>
+      <ul>
+        <li><b>Structured health &amp; readiness</b> endpoints (per node, per facet)</li>
+        <li><b>Manageability</b> — query, probe, and trigger remediation</li>
+        <li><b>Encrypted in transit</b> — TLS end to end, authenticated callers</li>
+        <li><b>Fleet-aware</b> — built for cluster · swarm · hive scale</li>
+      </ul>
+      <div class="codeblk"><span class="c"># AI-agent health probe — TLS</span><br><span class="k">GET</span> https://node/api/v1/health/vitals<br>&nbsp;&nbsp;<span class="s">200</span> { status:<span class="s">"healthy"</span>, write_plane:<span class="s">"live"</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attestation:<span class="s">"valid"</span>, self_heal:<span class="s">"idle"</span> }</div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin:34px 0 0">Self-healing control loop</div>
+  <div class="loop">
+    <div class="lstep"><div class="ln">01 · SENSE</div><h4>Detect</h4><p>Continuous probes across every facet surface a deviation from healthy baselines.</p><span class="arr">→</span></div>
+    <div class="lstep"><div class="ln">02 · REASON</div><h4>Diagnose</h4><p>Correlate signals to a root cause and a blast radius — node, backend, or federation link.</p><span class="arr">→</span></div>
+    <div class="lstep"><div class="ln">03 · ACT</div><h4>Remediate</h4><p>Apply a safe, bounded corrective action — reconnect, re-sync, reclaim, restart, or fail over.</p><span class="arr">→</span></div>
+    <div class="lstep"><div class="ln">04 · CONFIRM</div><h4>Verify</h4><p>Re-probe to confirm health restored; log the action; escalate to a human if not resolved.</p></div>
+  </div>
+  <div class="loopnote">↻ fail-closed by design — an action it cannot safely take or verify is surfaced to a human operator, never silently assumed</div>
+
+  <div class="eyebrow" style="margin:34px 0 0">Coverage · vital / degraded / critical</div>
+  <div class="vitals">
+    <div class="vital"><div class="top"><span class="gl">◆</span><span class="pill ok">Vital · integrity</span></div><h4>Write-plane &amp; commit health</h4><p>Write liveness, transaction success, no partial or unsigned commits.</p><div class="spark"><i style="height:60%"></i><i style="height:75%"></i><i style="height:65%"></i><i style="height:85%"></i><i style="height:80%"></i><i style="height:90%"></i></div></div>
+    <div class="vital"><div class="top"><span class="gl">◆</span><span class="pill ok">Vital · integrity</span></div><h4>Attestation chain</h4><p>Signed event-chain continuity; checkpoint signatures valid and current.</p><div class="spark"><i style="height:80%"></i><i style="height:82%"></i><i style="height:78%"></i><i style="height:88%"></i><i style="height:84%"></i><i style="height:90%"></i></div></div>
+    <div class="vital"><div class="top"><span class="gl">●</span><span class="pill ok">Vital · security</span></div><h4>Auth &amp; encryption posture</h4><p>TLS in transit, at-rest state, key and attestation health, no fail-open.</p><div class="spark"><i style="height:70%"></i><i style="height:72%"></i><i style="height:80%"></i><i style="height:76%"></i><i style="height:85%"></i><i style="height:88%"></i></div></div>
+    <div class="vital"><div class="top"><span class="gl">▲</span><span class="pill watch">Degraded · perf</span></div><h4>Latency &amp; throughput</h4><p>Read / recall / write latencies, queue depth, contention &amp; saturation.</p><div class="spark"><i style="height:55%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:74%"></i></div></div>
+    <div class="vital"><div class="top"><span class="gl">■</span><span class="pill ok">Vital · reliability</span></div><h4>Federation &amp; replication</h4><p>Peer links, catch-up cursors, cross-backend (SQLite / Postgres) parity.</p><div class="spark"><i style="height:78%"></i><i style="height:80%"></i><i style="height:74%"></i><i style="height:86%"></i><i style="height:82%"></i><i style="height:88%"></i></div></div>
+    <div class="vital"><div class="top"><span class="gl">■</span><span class="pill ok">Vital · reliability</span></div><h4>Resources &amp; capacity</h4><p>Disk, memory, connection pools, schema-version &amp; migration health.</p><div class="spark"><i style="height:66%"></i><i style="height:72%"></i><i style="height:70%"></i><i style="height:78%"></i><i style="height:76%"></i><i style="height:84%"></i></div></div>
+  </div>
+
+  <div class="eyebrow" style="margin:34px 0 0">Fleet-aware · one node to a hive</div>
+  <div class="scale">
+    <div class="tier"><div class="t">TIER · CLUSTER</div><h4>Cluster</h4><p>A handful of coordinated nodes — per-node vitals and a shared health view.</p></div>
+    <div class="tier"><div class="t">TIER · SWARM</div><h4>Swarm</h4><p>Many agents across many nodes — aggregate health, hotspots, and blast-radius awareness.</p></div>
+    <div class="tier"><div class="t">TIER · HIVE</div><h4>Hive</h4><p>Global, federated fleet — collective health, cross-region parity, and coordinated self-healing.</p></div>
+  </div>
+  <p class="note">The health-monitoring &amp; self-healing framework is an AgenticMem commercial capability provided to supported customers — layered on the open-source ai-memory substrate, not a fork of it.</p>
+</div></section>
+
+<!-- WHAT AI-MEMORY SOLVES -->
+<section id="problem"><div class="wrap reveal">
+  <div class="sec-h">
+    <div class="eyebrow">What ai-memory solves</div>
+    <h2>Agents are brilliant. Their memory <span class="a">is the risk that blocks production.</span></h2>
+  </div>
+  <div class="problem">
+    <div class="big">There is no reliable place for an AI agent to keep what it has done — so there is no continuity, no shared context, and <span class="a">no accountability.</span></div>
     <div class="aside">
-      <p>Every serious AI deployment is moving from a single assistant to <b>fleets of agents</b> — clusters, swarms, and hives acting continuously on real systems. The one thing they all lack is a reliable place to remember.</p>
-      <p>As agents graduate from demos to production, and into regulated, mission-critical work, the buyer's question changes. It stops being <i>"how smart is the agent?"</i> and becomes <b>"can I trust what it remembers — and prove it?"</b></p>
-      <p>AgenticMem sells that trust.</p>
+      <p>As organizations move from a single assistant to swarms of agents acting on real systems, that gap becomes the risk that blocks production. And it compounds: run <b>one agent five thousand times over shared memory</b> and a single signed-but-wrong belief can convince all five thousand — a <b>cascade</b> that burns hours and tens of thousands in tokens before a human notices.</p>
+      <p><b>Memory is the missing layer — and it cannot be faked.</b> ai-memory is engineered so that when memory is wrong, the damage is <b>attributable, boundable, and reversible</b> instead of silent.</p>
     </div>
   </div>
-</section>
 
-<!-- OPEN CORE -->
-<section>
-  <div class="reveal in">
-    <div class="sec-eyebrow">The model</div>
-    <h2 class="st">Open core: a free standard, a trusted business</h2>
-    <p class="sk">The open-source substrate is not crippleware — it's a genuinely excellent, self-hostable memory layer. That builds the adoption flywheel and makes <b>ai-memory the standard</b>. AgenticMem monetizes what enterprises and governments will not run without.</p>
+  <div class="eyebrow" style="margin:36px 0 13px">The v1 guarantees</div>
+  <div class="grid">
+    <div class="feat"><div class="fn">◆ Data integrity</div><h3>Deletes stay forgotten</h3><p>A delete destroys the record's own key and replicates the <b>erasure itself</b> — no lagging node can resurrect it. Forgotten stays forgotten, fleet-wide.</p></div>
+    <div class="feat"><div class="fn">● Security</div><h3>Forgery is convicted</h3><p>A bad signature is permanently marked <b>forged</b>, never filed as merely "unsigned," and the event history is a tamper-evident chain anyone can verify — breaks and truncation are caught.</p></div>
+    <div class="feat"><div class="fn">● Security</div><h3>Denial stays denial</h3><p>Every permission check fails <b>closed</b> on an outage, an unreadable rule refuses rather than waving traffic through, and an operator's Deny is terminal — no token overrides it.</p></div>
+    <div class="feat"><div class="fn">■ Reliability · ◆ Integrity</div><h3>"Accepted" means replicated</h3><p>A write that can't reach its required copies says so <b>loudly at the source</b>, with the record to reconcile; every failed hand-off lands in a durable queue drained until it succeeds — no silent divergence.</p></div>
   </div>
-  <div class="split reveal in">
-    <div class="oc free">
-      <span class="tag">Free · open source</span>
-      <h3>ai-memory<span class="u">Apache 2.0 · community</span></h3>
-      <p class="d">The core endpoint-memory substrate for AI agents — from a single agent to a small cluster.</p>
-      <ul>
-        <li>The <b>memory substrate</b> &amp; native MCP integration</li>
-        <li>Single-node &amp; small self-hosted deployments</li>
-        <li>The open <b>standard</b> every agent framework can build on</li>
-        <li>Developer community, transparency, and trust by inspection</li>
-      </ul>
-    </div>
-    <div class="oc comm">
-      <span class="tag">Commercial · AgenticMem</span>
-      <h3>AgenticMem<span class="u">enterprise · government · scale</span></h3>
-      <p class="d">The trust guarantees, scale, compliance, and operation turned into a product.</p>
-      <ul>
-        <li><b>Enterprise federation</b> at scale — clusters, swarms &amp; hives</li>
-        <li><b>Encryption</b> in transit &amp; at rest, HSM/KMS, cryptographic attestation</li>
-        <li><b>Forensic audit trail</b> &amp; operator governance controls</li>
-        <li><b>Compliance</b>, SLAs, 24/7 support &amp; managed operation</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <p class="note">Every guarantee is backed by shipping code and tracked, fixed issues — proven from a single agent to a cluster, swarm, or hive, on both the SQLite and PostgreSQL backends alike.</p>
+</div></section>
 
-<!-- WHAT WE SELL -->
-<section>
-  <div class="reveal in">
-    <div class="sec-eyebrow">The offering</div>
-    <h2 class="st">What AgenticMem sells</h2>
-    <p class="sk">Five ways to buy trust, scale, and peace of mind on top of the free substrate.</p>
+<!-- WHAT AGENTICMEM PROVIDES -->
+<section id="offering" class="alt"><div class="wrap reveal">
+  <div class="sec-h">
+    <div class="eyebrow">What AgenticMem provides</div>
+    <h2>The open protocol stays free. <span class="a">The trust is what you buy.</span></h2>
+    <p>ai-memory is and remains open source under <b>Apache-2.0</b> — self-hostable, transparent, the emerging standard. AgenticMem is the commercial support vehicle for organizations that will stake mission-critical work on it: the trust, scale, governance, and counterparty an enterprise can't run without — <b>never a crippled core.</b></p>
   </div>
-  <div class="offers reveal in">
-    <div class="offer"><div class="no">01</div><h4>Managed Cloud</h4><p>Hosted, multi-tenant, SLA-backed endpoint memory. Usage-based. The fastest path from <b>"we have agents"</b> to <b>"our agents remember, safely."</b></p></div>
-    <div class="offer"><div class="no">02</div><h4>Enterprise Federation</h4><p>The certified configuration, productized — encrypted, attested, governed. On-prem, air-gapped, or in-VPC. PostgreSQL + AGE + pgvector.</p></div>
-    <div class="offer"><div class="no">03</div><h4>Compliance &amp; Certification</h4><p>SOC&nbsp;2, HIPAA, FedRAMP / StateRAMP, government accreditation — the moat that unlocks the mission-critical buyer.</p></div>
-    <div class="offer"><div class="no">04</div><h4>Reflection-AI Curation</h4><p>Managed cross-model memory curation — dedup, consolidation, and graph enrichment so agents never sit in a single model's echo chamber.</p></div>
-    <div class="offer"><div class="no">05</div><h4>Support &amp; Services</h4><p>24/7 support, SLAs, migration, and reference architectures for agent fleets at scale.</p></div>
+  <div class="two">
+    <div class="col"><div class="lbl">Open source · Apache-2.0</div><h3>ai-memory</h3><ul>
+      <li>A genuine <b>public substrate</b> for AI agent memory</li>
+      <li>Self-hostable and transparent — the emerging <b>standard</b></li>
+      <li>Free, building the adoption flywheel</li>
+      <li>Every guarantee visible in the open-source code</li>
+    </ul></div>
+    <div class="col tealed"><div class="lbl">Commercial · AgenticMem</div><h3>AgenticMem support</h3><ul>
+      <li><b>Commercial support</b> — a counterparty that stands behind the deployment</li>
+      <li><b>Certified configurations</b> — the PostgreSQL + AGE + pgvector data tier, verified, not improvised</li>
+      <li><b>Governable, policy-enforced deployments</b> — operator rules agents can never bypass</li>
+      <li><b>Data-local where required</b> — run it inside your own boundary; air-gap and sovereign capable</li>
+      <li><b>Explicit federation</b> — default-deny peers, scoped to exactly what they may send or pull</li>
+      <li><b>AI health monitoring + self-healing</b> — detect → diagnose → remediate → verify, fail-closed</li>
+    </ul></div>
   </div>
-</section>
+  <div class="pillars" style="margin-top:16px">
+    <div class="pil"><div class="g">◆</div><h4>Data integrity</h4><p>No silent loss; no partial or unsigned commit.</p></div>
+    <div class="pil"><div class="g">●</div><h4>Security</h4><p>Operator rules never bypassed; no fail-open.</p></div>
+    <div class="pil"><div class="g">▲</div><h4>Performance</h4><p>Bounded, non-DoS-able, live under contention.</p></div>
+    <div class="pil"><div class="g">■</div><h4>Reliability</h4><p>Cross-backend parity, recoverability, no kill-switch.</p></div>
+  </div>
+  <p class="note">One North Star governs every gate, issue, and test: that a <b>Fortune 500 or a government could trust it with mission-critical work.</b></p>
+</div></section>
 
-<!-- MOAT -->
-<section>
-  <div class="reveal in">
-    <div class="sec-eyebrow">Defensibility</div>
-    <h2 class="st">Why it holds</h2>
-  </div>
-  <div class="moat reveal in">
-    <div class="mcell"><div class="mi">◆</div><h4>The standard &amp; community</h4><p>The OSS substrate becomes the memory API everyone integrates against. AgenticMem is the company behind it.</p></div>
-    <div class="mcell"><div class="mi">◆</div><h4>Trust as a product</h4><p>Attestation, audit trail, and four-pillar engineering rigor are <b>provable</b>, not marketing — the differentiator in a market flooded with vibe-coded tooling.</p></div>
-    <div class="mcell"><div class="mi">◆</div><h4>Compliance</h4><p>Certifications are slow, costly, and defensible. Whoever holds them owns the regulated and government market.</p></div>
-    <div class="mcell"><div class="mi">◆</div><h4>Data gravity</h4><p>Memory accumulates and becomes load-bearing. The memory layer is the stickiest layer in the stack.</p></div>
-  </div>
-</section>
-
-<!-- ROADMAP -->
-<section>
-  <div class="reveal in">
-    <div class="sec-eyebrow">Trajectory</div>
-    <h2 class="st">From standard to trusted business</h2>
-    <p class="sk">In stealth today. The commercial offering opens <b>Q4 2026 → Q1 2027</b>, on the back of a hardened open-source GA.</p>
-  </div>
-  <div class="road reveal in">
-    <div class="phase hot">
-      <div class="when"><span class="lab">Now · stealth</span>2026</div>
-      <div class="body"><h4>Ship the standard</h4><p>ai-memory v1.0.0 GA to the mission-critical bar — data integrity, security, performance, reliability. Drive adoption as the open memory substrate; land design partners.</p><span class="badge">◆ In progress</span></div>
-    </div>
-    <div class="phase hot">
-      <div class="when"><span class="lab">Commercial GA</span>Q4 '26 – Q1 '27</div>
-      <div class="body"><h4>Open the commercial offering</h4><p>Enterprise Federation + commercial support subscriptions for the first regulated and enterprise customers. AgenticMem comes out of stealth.</p><span class="badge">◆ Target window</span></div>
-    </div>
-    <div class="phase">
-      <div class="when"><span class="lab">Scale</span>2027</div>
-      <div class="body"><h4>Managed Cloud</h4><p>Multi-tenant AgenticMem Cloud (SaaS) and the reflection-AI curation service — the fastest on-ramp for AI-native teams.</p></div>
-    </div>
-    <div class="phase">
-      <div class="when"><span class="lab">Regulated wedge</span>2027 →</div>
-      <div class="body"><h4>Compliance &amp; government</h4><p>FedRAMP / StateRAMP and the government and regulated-industry wedge — air-gapped and sovereign deployments.</p></div>
+<!-- COMPANY -->
+<section><div class="wrap reveal">
+  <div class="company">
+    <div class="eyebrow" style="color:var(--accent)">The company</div>
+    <h2 style="margin-top:12px"><span class="a">AgenticMem</span></h2>
+    <p>The trusted memory layer for the agentic enterprise — commercially supported ai-memory, for the organizations that will stake mission-critical work on it.</p>
+    <div class="row">
+      <span>Commercial support for <b>ai-memory</b></span>
+      <span>Certified tier · <b>PostgreSQL + AGE + pgvector</b></span>
+      <span><b>www.agenticmem.co</b></span>
     </div>
   </div>
-</section>
+</div></section>
 
-<!-- MISSION -->
-<section class="mission reveal in">
-  <h2>Give AI agents a memory <span class="amber">the world can trust.</span></h2>
-  <p>Reliable enough for a Fortune&nbsp;500 or a government to stake mission-critical processes on. Open enough to become the standard. Commercially supported so the organizations that depend on it never have to worry.</p>
-  <div class="pillrow">
-    <span><b>◆</b> Data integrity</span>
-    <span><b>●</b> Security</span>
-    <span><b>▲</b> Performance</span>
-    <span><b>■</b> Reliability</span>
+<!-- PROOF / RESOURCES -->
+<section id="proof" class="alt"><div class="wrap reveal">
+  <div class="sec-h">
+    <div class="eyebrow">See for yourself</div>
+    <h2>The evidence, <span class="a">in the open.</span></h2>
+    <p>Every claim on this page is backed by a public artifact — the running campaign, the code, and the methodology.</p>
   </div>
-</section>
+  <div class="res">
+    <a class="rlink" href="https://test.agenticmem.co/" target="_blank" rel="noopener"><span class="rl">Live campaign</span><span class="rt"><b>Acceptance campaign</b> — measured live</span><span class="arw">↗</span></a>
+    <a class="rlink" href="https://alphaonedev.github.io/ai-memory-mcp/engineering/how-ai-memory-is-built.html" target="_blank" rel="noopener"><span class="rl">Methodology</span><span class="rt"><b>How ai-memory is built</b></span><span class="arw">↗</span></a>
+    <a class="rlink" href="https://alphaonedev.github.io/ai-memory-mcp/" target="_blank" rel="noopener"><span class="rl">Open source</span><span class="rt"><b>ai-memory</b> — project site</span><span class="arw">↗</span></a>
+    <a class="rlink" href="https://github.com/alphaonedev/ai-memory-mcp" target="_blank" rel="noopener"><span class="rl">GitHub</span><span class="rt"><b>alphaonedev/ai-memory-mcp</b></span><span class="arw">↗</span></a>
+    <a class="rlink" href="https://founder.agenticmem.co" target="_blank" rel="noopener"><span class="rl">Founder</span><span class="rt"><b>Meet the founder</b></span><span class="arw">↗</span></a>
+    <a class="rlink" href="https://www.agenticmem.co" target="_blank" rel="noopener"><span class="rl">Company</span><span class="rt"><b>AgenticMem</b> — www.agenticmem.co</span><span class="arw">↗</span></a>
+  </div>
+</div></section>
 
-<div class="foot">
-  <span>AgenticMem · <span class="u">agenticmem.co</span></span>
-  <span>Confidential · Stealth · © 2026</span>
+<!-- FOOTER CTA -->
+<div class="foot"><div class="wrap reveal">
+  <h2>Give AI agents a memory <span class="a">the world can trust.</span></h2>
+  <div class="fcta">
+    <a class="btn primary" href="https://test.agenticmem.co/" target="_blank" rel="noopener">Watch the live campaign →</a>
+    <a class="btn ghost" href="https://github.com/alphaonedev/ai-memory-mcp" target="_blank" rel="noopener">ai-memory on GitHub</a>
+  </div>
+</div></div>
+<div class="footbar wrap">
+  <span>ai-memory™ · endpoint memory for AI agents · Apache-2.0 · <a href="https://github.com/alphaonedev/ai-memory-mcp" target="_blank" rel="noopener">github.com/alphaonedev/ai-memory-mcp</a></span>
+  <span>AgenticMem™ · commercial support · <a href="https://www.agenticmem.co" target="_blank" rel="noopener">agenticmem.co</a> · © 2026 AlphaOne LLC</span>
 </div>
-</div>
-<button class="themetog" id="themetog">◐ theme</button>
+
+<!-- LEGAL & DISCLOSURES (public) -->
+<footer class="legal"><div class="wrap">
+  <div class="lh">Legal &amp; Disclosures</div>
+  <div class="legal-grid">
+    <div class="legal-col">
+      <h5>Trademarks</h5>
+      <p>ai-memory™ and AgenticMem™ are trademarks of AlphaOne LLC, with applications filed with the United States Patent and Trademark Office (USPTO); registration is pending and has not been granted. All other names, logos, and brands — including PostgreSQL®, Apache® and Apache AGE™, pgvector, DigitalOcean®, AWS®, Google Cloud™, Microsoft Azure®, Kubernetes®, OpenShift®, Docker®, HelixDB, OpenRouter, and the Model Context Protocol (MCP) — are the property of their respective owners and are used for identification only. Their use does not imply affiliation with, sponsorship by, or endorsement by their owners.</p>
+    </div>
+    <div class="legal-col">
+      <h5>Open-Source Core &amp; License</h5>
+      <p>© 2026 AlphaOne LLC. The ai-memory substrate is open source under the Apache License, Version 2.0, and is provided "AS IS", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including without limitation any warranty of merchantability, fitness for a particular purpose, title, or non-infringement, to the fullest extent permitted by law. The governing terms are the LICENSE and NOTICE files in the repository at github.com/alphaonedev/ai-memory-mcp. AgenticMem commercial capabilities — including the AI Health Monitoring &amp; Self-Healing framework — are separate commercial offerings and are not part of, or provided under, the open-source Apache-2.0 license.</p>
+    </div>
+    <div class="legal-col">
+      <h5>Forward-Looking Statements</h5>
+      <p>This material contains forward-looking statements about future products, features, roadmaps, release timing, and the AgenticMem commercial offering. These are estimates based on current expectations, are subject to risks, uncertainties, and change without notice, and are not commitments, promises, or guarantees of delivery. Do not rely on them in making any decision.</p>
+    </div>
+    <div class="legal-col">
+      <h5>No Offer · No Securities Solicitation</h5>
+      <p>This material is provided for general informational purposes only. It is not an offer to sell, or a solicitation of an offer to buy, any product, service, or security, and it is not investment, legal, tax, accounting, or financial advice. Any commercial offering, pricing, terms, availability, and scope are preliminary, may change, and would be governed solely by definitive written agreements.</p>
+    </div>
+    <div class="legal-col">
+      <h5>No Warranty · Performance &amp; Security</h5>
+      <p>Reference sizing, capacity, and performance figures are indicative planning estimates only, not guarantees; actual results depend on workload, configuration, hardware, and network. No security control is impenetrable. Security features are effective only when correctly deployed and configured, and AlphaOne LLC does not warrant that the software or any deployment is free of vulnerabilities or immune to compromise, loss, or misuse.</p>
+    </div>
+    <div class="legal-col">
+      <h5>No Endorsement · References</h5>
+      <p>References to standards, agencies, enterprises, or governments — including any reference to NSA hardening guidance, or to Fortune 500, federal, state, county, or municipal use — describe design goals, engineering standards, or an intended assurance bar. They are not, and must not be construed as, certification, accreditation, authorization, endorsement, affiliation, or an existing customer relationship, unless separately stated in a signed writing and independently verifiable.</p>
+    </div>
+  </div>
+  <div class="legal-foot">
+    <span><b>AgenticMem LLC</b> · commercial support for ai-memory · agenticmem.co</span>
+    <span>ai-memory™ core (Apache-2.0) · AgenticMem™ commercial capabilities</span>
+    <span>© 2026 AlphaOne LLC · all rights reserved</span>
+  </div>
+</div></footer>
+
+<button class="themetog" id="themetog" aria-label="Toggle color theme">◐ theme</button>
 
 <script>
 const tt=document.getElementById("themetog");
-try{const s=localStorage.getItem("am-theme");if(s)document.documentElement.setAttribute("data-theme",s);}catch(e){}
+try{const s=localStorage.getItem("agm-theme");if(s)document.documentElement.setAttribute("data-theme",s);}catch(e){}
 tt.addEventListener("click",()=>{
   const c=document.documentElement.getAttribute("data-theme");
   const n=c==="dark"?"light":c==="light"?"dark":(matchMedia("(prefers-color-scheme:dark)").matches?"light":"dark");
   document.documentElement.setAttribute("data-theme",n);
-  try{localStorage.setItem("am-theme",n);}catch(e){}
+  try{localStorage.setItem("agm-theme",n);}catch(e){}
 });
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.1,rootMargin:"0px 0px -8% 0px"});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.08,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 </script>
 
-<!-- ================= ai-memory project — shared legal footer ================= -->
-<style>
-.aimo-legal{--al-bg:#f1efe9;--al-line:#ddd6c8;--al-h:#8a6d1a;--al-t:#877f6f;--al-ink:#443f36;
-  background:var(--al-bg);border-top:1px solid var(--al-line);padding:44px 0;margin:0;
-  font-family:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .aimo-legal{--al-bg:#0c0b08;--al-line:#272319;--al-h:#c9a84e;--al-t:#8a8272;--al-ink:#c7c0b3}}
-:root[data-theme="dark"] .aimo-legal{--al-bg:#0c0b08;--al-line:#272319;--al-h:#c9a84e;--al-t:#8a8272;--al-ink:#c7c0b3}
-:root[data-theme="light"] .aimo-legal{--al-bg:#f1efe9;--al-line:#ddd6c8;--al-h:#8a6d1a;--al-t:#877f6f;--al-ink:#443f36}
-.aimo-legal *{box-sizing:border-box}
-.aimo-legal .aw{max-width:1100px;margin:0 auto;padding:0 24px}
-.aimo-legal .lh{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--al-t);font-weight:600;margin-bottom:22px}
-.aimo-legal .lg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 32px}
-@media(max-width:820px){.aimo-legal .lg{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.aimo-legal .lg{grid-template-columns:1fr}}
-.aimo-legal h5{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--al-h);font-weight:700;margin:0 0 7px}
-.aimo-legal p{margin:0;font-size:11px;color:var(--al-t);line-height:1.58}
-.aimo-legal p b,.aimo-legal .lf b{color:var(--al-ink);font-weight:600}
-.aimo-legal .lf{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-top:26px;padding-top:18px;border-top:1px solid var(--al-line);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;color:var(--al-t)}
-</style>
-<footer class="aimo-legal"><div class="aw">
-  <div class="lh">Legal &amp; Disclosures</div>
-  <div class="lg">
-    <div><h5>Third-party names</h5><p>All other names, logos, and brands are the property of their respective owners.</p></div>
-    <div><h5>Copyright &amp; Open-Source License</h5><p>© 2026 AlphaOne LLC. All rights reserved. ai-memory is an open-source project of AlphaOne LLC under the Apache License, Version 2.0, provided "AS IS", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including without limitation any warranty of merchantability, fitness for a particular purpose, title, or non-infringement, to the fullest extent permitted by law. Governing terms are the LICENSE and NOTICE files: github.com/alphaonedev/ai-memory-mcp.</p></div>
-    <div><h5>Forward-Looking Statements</h5><p>This material contains forward-looking statements about future products, features, roadmaps, release timing, and the planned AgenticMem commercial offering (targeting Q4 2026 – Q1 2027). These are estimates based on current expectations, are subject to risks, uncertainties, and change without notice, and are not commitments, promises, or guarantees of delivery. Do not rely on them in making any decision.</p></div>
-    <div><h5>No Offer · No Securities Solicitation</h5><p>This material is provided for general informational purposes only. It is not an offer to sell, or a solicitation of an offer to buy, any product, service, or security, and it is not investment, legal, tax, accounting, or financial advice. AgenticMem is a planned commercial entity currently in stealth; any offering, pricing, terms, availability, and scope are preliminary, may change, and would be governed solely by definitive written agreements.</p></div>
-    <div><h5>No Warranty · Performance &amp; Security</h5><p>Reference sizing, bandwidth, capacity (including "up to 500 AI agents per modular tier"), and performance figures are indicative planning estimates only, not guarantees; actual results depend on workload, configuration, hardware, and network. No security control is impenetrable; security features are effective only when correctly deployed and configured, and AlphaOne LLC does not warrant that the software or any deployment is free of vulnerabilities or immune to compromise, loss, or misuse.</p></div>
-    <div><h5>No Endorsement · References</h5><p>References to standards, agencies, enterprises, or governments — including any reference to NSA hardening guidance, or to Fortune 500, federal, state, county, or municipal use — describe design goals, engineering standards, or an intended assurance bar. They are not, and must not be construed as, certification, accreditation, authorization, endorsement, affiliation, or an existing customer relationship, unless separately stated in a signed writing and independently verifiable.</p></div>
-  </div>
-  <div class="lf">
-    <span><b>AlphaOne LLC</b> · alpha-one.mobi · © 2026. All rights reserved.</span>
-    <span>ai-memory (Apache-2.0) · AgenticMem (stealth) · agenticmem.co</span>
-    <span><b>Confidential &amp; proprietary</b> — intended for the recipient; not for redistribution without permission.</span>
-  </div>
-</div></footer>
-
-</body>
-</html>
+</body></html>
